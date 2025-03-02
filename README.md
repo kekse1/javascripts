@@ -11,7 +11,7 @@ Every JavaScript is made by myself, arose out of necessity.. or because I found 
 
 > [!NOTE]
 > **JFYI**: I really dislike [npm.js](https://npmjs.org/) and the inclusion of so many
-> modules I could write by myself as well. Don't expect me to use 'em..
+> modules I could write by myself as well. Don't expect me to use 'em.
 
 ## Index
 1. [News](#news)
