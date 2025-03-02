@@ -1,5 +1,14 @@
 <img src="https://kekse.biz/github.php?draw&override=github:javascripts" />
 
+Every JavaScript is made by myself, arose out of necessity.. or because I found it interesting.
+
+> [!INFO]
+> For the future I'm planning to sort all the scripts in here by their line counts. JFYI..
+
+> [!INFO]
+> I think **most** scripts should run 'as is', due to the nature of **vanilla** JavaScript
+> (whereas I'm mostly using the [**Node.js**](https://nodejs.org/)).
+
 ## Index
 1. [News](#news)
 2. [Scripts](#scripts)
