@@ -3,7 +3,7 @@
 Every JavaScript is made by myself, arose out of necessity.. or because I found it interesting.
 
 > [!INFO]
-> For the future I'm planning to sort all the scripts in here by their line counts. JFYI..
+> For the future I'm planning to sort all the scripts in here by their line counts. **JFYI**..
 
 > [!INFO]
 > I think **most** scripts should run 'as is', due to the nature of **vanilla** JavaScript
