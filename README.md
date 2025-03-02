@@ -9,6 +9,11 @@ Every JavaScript is made by myself, arose out of necessity.. or because I found 
 > I think **most** scripts should run 'as is', due to the nature of **vanilla** JavaScript.
 > As interpreter I'm mostly using the nice [**Node.js**](https://nodejs.org/).
 
+> [!TIP]
+> You could also take a look at my [**`make-nodejs.sh`**](https://github.com/kekse1/scripts/#make-nodejssh)
+> script within my own [**Scripts**](https://github.com/kekse1/scripts/) repository. This makes it easier
+> and more elegant to manage even multiple versions of **Node.js**.
+
 > [!NOTE]
 > **JFYI**: I really dislike [npm.js](https://npmjs.org/) and the inclusion of so many
 > modules I could write by myself as well. Don't expect me to use 'em.
