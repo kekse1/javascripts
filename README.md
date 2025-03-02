@@ -6,8 +6,12 @@ Every JavaScript is made by myself, arose out of necessity.. or because I found 
 > For the future I'm planning to sort all the scripts in here by their line counts. **JFYI**..
 
 > [!NOTE]
-> I think **most** scripts should run 'as is', due to the nature of **vanilla** JavaScript
-> (whereas I'm mostly using the [**Node.js**](https://nodejs.org/)).
+> I think **most** scripts should run 'as is', due to the nature of **vanilla** JavaScript.
+> As interpreter I'm mostly using the nice [**Node.js**](https://nodejs.org/).
+
+> [!NOTE]
+> **JFYI**: I really dislike [npm.js](https://npmjs.org/) and the inclusion of so many
+> modules I could write by myself as well. Don't expect me to use 'em..
 
 ## Index
 1. [News](#news)
