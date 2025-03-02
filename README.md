@@ -2,10 +2,10 @@
 
 Every JavaScript is made by myself, arose out of necessity.. or because I found it interesting.
 
-> [!INFO]
+> [!NOTE]
 > For the future I'm planning to sort all the scripts in here by their line counts. **JFYI**..
 
-> [!INFO]
+> [!NOTE]
 > I think **most** scripts should run 'as is', due to the nature of **vanilla** JavaScript
 > (whereas I'm mostly using the [**Node.js**](https://nodejs.org/)).
 
