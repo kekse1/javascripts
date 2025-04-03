@@ -18,6 +18,22 @@ Every JavaScript is made by myself, arose out of necessity.. or because I found 
 > **JFYI**: I really dislike [npm.js](https://npmjs.org/) and the inclusion of so many
 > modules I could write by myself as well. Don't expect me to use 'em.
 
+<br><br>
+
+### News
+* \[**2025-01-14**\] Created [**`newlines`.js**](#newlinesjs), v**0.1.0**;
+* \[**2025-01-10**\] Update in my [**`config`.js**](#configjs), to v**0.8.0**;
+* \[**2024-12-24**\] Uploaded my [**`chess`.js**](#chessjs), v**0.2.1**;
+* \[**2024-12-13**\] Updated [**`fill`.js**](#filljs), now v**0.1.1**;
+* \[**2024-12-03**\] Created [**`bytes`.js**](#bytesjs), v**0.1.0**;
+* \[**2024-11-26**\] Created [**`escaping`.js**](#escapingjs), v**0.2.0**;
+* \[**2024-11-25**\] Updated [**`clone`.js**](#clonejs), v**0.5.1**;
+* \[**2024-11-05**\] Updated the new [**`measure`.js**](#measurejs) to v**0.2.1**;
+* \[**2024-09-24**\] **Moved** the [**`offset`.js**](#offsetjs) script to my [new **`utilities`** repository](https://github.com/kekse1/utilities/);
+* \[**2024-09-24**\] Created this repository, to move only the JavaScripts from my [**`scripts` repository**](https://github.com/kekse1/scripts/) to here.
+
+<br><br>
+
 ## Index
 1. [News](#news)
 2. [Scripts](#scripts)
@@ -42,17 +58,7 @@ Every JavaScript is made by myself, arose out of necessity.. or because I found 
 3. [Contact](#contact)
 4. [Copyright and License](#copyright-and-license)
 
-## News
-* \[**2025-01-14**\] Created [**`newlines`.js**](#newlinesjs), v**0.1.0**;
-* \[**2025-01-10**\] Update in my [**`config`.js**](#configjs), to v**0.8.0**;
-* \[**2024-12-24**\] Uploaded my [**`chess`.js**](#chessjs), v**0.2.1**;
-* \[**2024-12-13**\] Updated [**`fill`.js**](#filljs), now v**0.1.1**;
-* \[**2024-12-03**\] Created [**`bytes`.js**](#bytesjs), v**0.1.0**;
-* \[**2024-11-26**\] Created [**`escaping`.js**](#escapingjs), v**0.2.0**;
-* \[**2024-11-25**\] Updated [**`clone`.js**](#clonejs), v**0.5.1**;
-* \[**2024-11-05**\] Updated the new [**`measure`.js**](#measurejs) to v**0.2.1**;
-* \[**2024-09-24**\] **Moved** the [**`offset`.js**](#offsetjs) script to my [new **`utilities`** repository](https://github.com/kekse1/utilities/);
-* \[**2024-09-24**\] Created this repository, to move only the JavaScripts from my [**`scripts` repository**](https://github.com/kekse1/scripts/) to here.
+<br>
 
 ## JavaScripts
 My favorite language.. absolutely. **^\_^**
@@ -62,16 +68,20 @@ TODAY, in the times of [`Node.js`](https://nodejs.org/), it's a great language, 
 
 Every script is made by myself, arose out of necessity.. or because I found it interesting.
 
+<br><br>
 
+### `dump.js`
 <a href="https://github.com/kekse1/dump.js/">
-<img id="dumpjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=28&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60dump.js%60" />
+<img id="dumpjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60dump.js%60" />
 </a>
 
 Got it's own [repository **`dump.js`**](https://github.com/kekse1/dump.js/)
 
+<br><br>
 
+### `offset.js`
 <a href="src/offset.js">
-<img id="offsetjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=28&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60offset.js%60" />
+<img id="offsetjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60offset.js%60" />
 </a>
 
 With this script, you can calculate and convert between offsets and lines with columns,
@@ -83,9 +93,11 @@ another parameter combination you can even get to know how many columns a specif
 > [!TIP]
 > Start with the argv parameter `--help` or `-?`. ;-)
 
+<br><br>
 
+### `clone.js`
 <a href="src/clone.js">
-<img id="clonejs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=28&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60clone.js%60" />
+<img id="clonejs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60clone.js%60" />
 </a>
 
 * [Version v**0.5.1**](src/clone.js) (updated **2024-11-25**)
@@ -100,9 +112,11 @@ extensions are being fully cloned. And even the functions themselves (if `_funct
 > [!INFO]
 > Since v**0.5.0** the function also supports any type of `TypedArray`.
 
+<br><br>
 
+### `config.js`
 <a href="src/config.js">
-<img id="configjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=28&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60config.js%60" />
+<img id="configjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60config.js%60" />
 </a>
 
 * [Version v**0.8.0**](src/config.js) (updated **2025-01-10**)
@@ -134,9 +148,11 @@ can start in a sub object).. and now, since v**0.6.0** I also support the
 'step-wise' traversing up the paths. So not only any chroot path, but **every**
 path item (see `Configuration.delim`)!
 
+<br><br>
 
+### `links.js`
 <a href="src/links.js">
-<img id="linksjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=28&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60links.js%60" />
+<img id="linksjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60links.js%60" />
 </a>
 
 * [Version v**0.8.3**](src/links.js) (updated **2024-05-02**)
@@ -162,9 +178,11 @@ one `.scheme[]` item..
 
 Nice one; have phun.
 
+<br><br>
 
+### `bytes.js`
 <a href="src/bytes.js">
-<img id="bytesjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=28&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60bytes.js%60" />
+<img id="bytesjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60bytes.js%60" />
 </a>
 
 * [Version v**0.1.0**](src/bytes.js) (created **2024-12-03**)
@@ -177,8 +195,11 @@ of Typed Arrays (which I don't like that much..).
 You could use it for more efficient encoding of numbers,
 on disk or via network transmission, etc.
 
+<br><br>
+
+### `reflection.js`
 <a href="src/reflection.js">
-<img id="reflectionjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=28&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60reflection.js%60" />
+<img id="reflectionjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60reflection.js%60" />
 </a>
 
 * [Version v**3.1.0**](src/reflection.js) (updated **2024-09-15**)
@@ -199,9 +220,11 @@ the starting comment on top of the file.
 > [!TIP]
 > In v**3.1.0** **improved/fixed** `Object.{has,get,set,remove}()`** (traversing functions)!
 
+<br><br>
 
+### `intersect.js`
 <a href="src/intersect.js">
-<img id="intersectjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=28&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60intersect.js%60" />
+<img id="intersectjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60intersect.js%60" />
 </a>
 
 * [Version v**0.2.2**](src/intersect.js) (created **2024-07-07**)
@@ -212,9 +235,11 @@ is in your arguments).
 
 **Depends** on my [`multiset`.js](#multisetjs)!!
 
+<br><br>
 
+### `multiset.js`
 <a href="src/multiset.js">
-<img id="multisetjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=28&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60multiset.js%60" />
+<img id="multisetjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60multiset.js%60" />
 </a>
 
 * [Version v**0.2.0**](src/multiset.js) (created **2024-04-30**)
@@ -222,9 +247,11 @@ is in your arguments).
 My `MultiSet` class: extends `Map`, but works like a `Set`, with the difference
 that it also counts the amount of items in this set.
 
+<br><br>
 
+### `escaping.js`
 <a href="src/escaping.js">
-<img id="escapingjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=28&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60escaping.js%60" />
+<img id="escapingjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60escaping.js%60" />
 </a>
 
 String extensions to support C {un,}escaping.
@@ -237,9 +264,11 @@ produce strings with the encoded values, so `\n` will
 become a real newline byte, and the first one will
 encode the string `\n` out of the `\10` byte code.
 
+<br><br>
 
+### `newlines.js`
 <a href="src/newlines.js">
-<img id="newlinesjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=28&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60newlines.js%60" />
+<img id="newlinesjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60newlines.js%60" />
 </a>
 
 > [!TIP]
@@ -271,9 +300,11 @@ always throw an exception.
 or with enabled conversion `stdout` is the place for the new
 data - `stderr` in this case for the count summary at the end.
 
+<br><br>
 
+### `measure.js`
 <a href="src/measure.js">
-<img id="measurejs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=28&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60measure.js%60" />
+<img id="measurejs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60measure.js%60" />
 </a>
 
 * [Version v**0.2.1**](src/measure.js) (updated **2024-11-05**)
@@ -282,9 +313,11 @@ Two functions to measure the **throughput** of your data, in bytes per second (j
 remove the multiplication with 1000 für milliseconds); and the **ETA** ('Estimated
 Time Of Arrival') w/ `.remaining()`, in milliseconds (multiply *1000 for seconds).
 
+<br><br>
 
+### `animation.js`
 <a href="https://github.com/kekse1/v4/blob/git/src/web/animation.js">
-<img id="animationjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=28&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60animation.js%60" />
+<img id="animationjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60animation.js%60" />
 </a>
 
 This is just a link to the only [`animation`.js](https://github.com/kekse1/v4/blob/git/src/web/animation.js) of my
@@ -296,9 +329,11 @@ Some extensions to the [**Web Animations API**](https://developer.mozilla.org/en
 Maybe useful for you? But you've to read the source for yourself; and some functions may be missing;
 then look at my [v4 source code](https://kekse.biz/?~sources)!
 
+<br><br>
 
+### `moon.js`
 <a href="src/moon.js">
-<img id="moonjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=28&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60moon.js%60" />
+<img id="moonjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60moon.js%60" />
 </a>
 
 Extends the `Date` object with moon phase calculation functions.
@@ -310,9 +345,11 @@ Extends the `Date` object with moon phase calculation functions.
 > * [**v4**/docs (...)](https://github.com/kekse1/v4/blob/git/docs/modules/lib/date.md)
 > * [`date.js`](https://github.com/kekse1/v4/blob/git/js/lib/globals/date.js)
 
+<br><br>
 
+### `fill.js`
 <a href="src/fill.js">
-<img id="filljs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=28&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60fill.js%60" />
+<img id="filljs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60fill.js%60" />
 </a>
 
 I'm a bit embarrassed about this script - it's just so really tiny and nothing..
@@ -321,9 +358,11 @@ I'm a bit embarrassed about this script - it's just so really tiny and nothing..
 
 But I really needed it one time. Read the description in the comment on top of this file.
 
+<br><br>
 
+### `chess.js`
 <a href="src/chess.js">
-<img id="chessjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=28&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60chess.js%60" />
+<img id="chessjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60chess.js%60" />
 </a>
 
 Little '**toy**'! "Maps" some counted values in a coordinate system,
@@ -335,9 +374,11 @@ so it **draws kinda chess board** .. in your **console**/**terminal**! ;-)
 
 **DEPENDS** on my own library, so you've to adapt this script for your own!
 
+<br><br>
 
+### `street-split.js`
 <a href="src/street-split.js">
-<img id="street-splitjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=28&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60street-split.js%60" />
+<img id="street-splitjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60street-split.js%60" />
 </a>
 
 * [Version v**0.2.0**](src/street-split.js) (updated **2024-06-03**)
@@ -345,9 +386,11 @@ so it **draws kinda chess board** .. in your **console**/**terminal**! ;-)
 It's merely kinda **proof of concept** that state parsers can be as good as regular expressions, or even better! **;-D**
 See also [**this discussion**](https://www.php.de/forum/webentwicklung/php-einsteiger/1614566-stra%C3%9Fe-und-hausnummer-korrekt-trennen);
 
+<br><br>
 
+### `fold.css.js`
 <a href="src/fold.css.js">
-<img id="foldcssjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=28&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60fold.css.js%60" />
+<img id="foldcssjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60fold.css.js%60" />
 </a>
 
 * [Version v**0.1.0**](src/fold.css.js) (updated **2024-03-04**)
@@ -363,6 +406,8 @@ but the code is/was a mess!
 
 > [!IMPORTANT]
 > Early version, so only the real basics are covered.
+
+<br>
 
 # Contact
 <img src="https://kekse.biz/github.php?override=github:javascripts&draw&text=javascripts@kekse.biz&angle=6&size=38pt&fg=150,20,90&font=OpenSans&ro&readonly&h=64&v=16" />
