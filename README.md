@@ -21,13 +21,13 @@ Every JavaScript is made by myself, arose out of necessity.. or because I found 
 <br><br>
 
 ### News
+* \[**2025-04-07**\] Updated [**`clone`.js**](#clonejs), v**0.6.0**: supports `Date` now.
 * \[**2025-01-14**\] Created [**`newlines`.js**](#newlinesjs), v**0.1.0**;
 * \[**2025-01-10**\] Update in my [**`config`.js**](#configjs), to v**0.8.0**;
 * \[**2024-12-24**\] Uploaded my [**`chess`.js**](#chessjs), v**0.2.1**;
 * \[**2024-12-13**\] Updated [**`fill`.js**](#filljs), now v**0.1.1**;
 * \[**2024-12-03**\] Created [**`bytes`.js**](#bytesjs), v**0.1.0**;
 * \[**2024-11-26**\] Created [**`escaping`.js**](#escapingjs), v**0.2.0**;
-* \[**2024-11-25**\] Updated [**`clone`.js**](#clonejs), v**0.5.1**;
 * \[**2024-11-05**\] Updated the new [**`measure`.js**](#measurejs) to v**0.2.1**;
 * \[**2024-09-24**\] **Moved** the [**`offset`.js**](#offsetjs) script to my [new **`utilities`** repository](https://github.com/kekse1/utilities/);
 * \[**2024-09-24**\] Created this repository, to move only the JavaScripts from my [**`scripts` repository**](https://github.com/kekse1/scripts/) to here.
@@ -100,7 +100,7 @@ another parameter combination you can even get to know how many columns a specif
 <img id="clonejs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60clone.js%60" />
 </a>
 
-* [Version v**0.5.1**](src/clone.js) (updated **2024-11-25**)
+* [Version v**0.6.0**](src/clone.js) (updated **2025-04-07**)
 
 My `Reflect.clone()` extension (because JavaScript doesn't include it natively)..
 
@@ -111,6 +111,7 @@ extensions are being fully cloned. And even the functions themselves (if `_funct
 
 > [!INFO]
 > Since v**0.5.0** the function also supports any type of `TypedArray`.
+> And since v**0.6.0** also supports `Date` correctly.
 
 <br><br>
 

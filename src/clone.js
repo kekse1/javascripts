@@ -1,7 +1,7 @@
 // 
 // Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
 // https://kekse.biz/ https://github.com/kekse1/javascripts/
-// v0.5.1
+// v0.6.0
 // 
 // Just a tiny function to *really* clone objects (etc.); .. with all types, not only JSON supported ones
 // or so (sometimes the web referes to just `JSON.parse(JSON.stringify({}))`);
@@ -23,11 +23,15 @@ const isTypedArray = (_item) => { var result;
 		result = (result === 'TypedArray'); }
 	catch(_err) { result = false; }
 	return result; };
+const isDate = (_item) => { try {
+	if(_item.constructor.name === 'Date') return true; }
+	catch(_err) { return false; } return false; };
 
 //
 Reflect.defineProperty(Reflect, 'clone', { value: (_object, _map = null, _function = DEFAULT_CLONE_FUNCTION, ... _clone_args) => {
-	if(!_map) _map = new Map(); else if(_map.has(_object)) return _map.get(_object); var result; if(isTypedArray(_object)) { result = _object.slice();
-		_map.set(_object, result); return result; }
+	if(!_map) _map = new Map(); else if(_map.has(_object)) return _map.get(_object); var result;
+	if(isDate(_object)) { result = new Date(_object); _map.set(_object, result); return result; }
+	if(isTypedArray(_object)) { result = _object.slice(); _map.set(_object, result); return result; }
 	if(!Reflect.isExtensible(_object)) { _map.set(_object, _object); return _object; }
 	if(typeof _object === 'undefined' || _object === null) return _object; const keys = Reflect.ownKeys(_object);
 	var cloneFunc; if(typeof _object.clone === 'function') cloneFunc = _object.clone.bind(_object, ... _clone_args); else if(typeof _object.cloneNode === 'function')
