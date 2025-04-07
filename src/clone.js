@@ -25,7 +25,7 @@ const isTypedArray = (_item) => { var result;
 	return result; };
 const isDate = (_item) => { try {
 	if(_item.constructor.name === 'Date') return true; }
-	catch(_err) { return false; } return false; };
+	catch(_err) {} return false; };
 
 //
 Reflect.defineProperty(Reflect, 'clone', { value: (_object, _map = null, _function = DEFAULT_CLONE_FUNCTION, ... _clone_args) => {
