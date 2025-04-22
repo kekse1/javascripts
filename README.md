@@ -21,6 +21,7 @@ Every JavaScript is made by myself, arose out of necessity.. or because I found 
 <br><br>
 
 ### News
+* \[**2025-04-22**\] Updated [**`reflection`.js**](#reflectionjs), v**3.2.0**;
 * \[**2025-04-07**\] Updated [**`clone`.js**](#clonejs), v**0.6.0**: supports `Date` now.
 * \[**2025-01-14**\] Created [**`newlines`.js**](#newlinesjs), v**0.1.0**;
 * \[**2025-01-10**\] Update in my [**`config`.js**](#configjs), to v**0.8.0**;
@@ -203,7 +204,7 @@ on disk or via network transmission, etc.
 <img id="reflectionjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60reflection.js%60" />
 </a>
 
-* [Version v**3.1.0**](src/reflection.js) (updated **2024-09-15**)
+* [Version v**3.2.0**](src/reflection.js) (updated **2025-04-22**)
 
 My solution for JavaScript's `instanceof` problem, so when in multiple environments
 the classes are initialized/declared not once. In this case, comparing two environments,
