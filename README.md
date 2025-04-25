@@ -2,17 +2,14 @@
 
 Every JavaScript is made by myself, arose out of necessity.. or because I found it interesting.
 
+Most should work 'as is', maybe also in your web browser,
+maybe with [Node.js](https://nodejs.org/) (whereas at this
+time(!) I'm usually working with CommonJS modules (using
+`import` and `export`). So maybe you also want some
+[`package.json`](src/package.json)?
+
 > [!NOTE]
 > For the future I'm planning to sort all the scripts in here by their line counts. **JFYI**..
-
-> [!NOTE]
-> I think **most** scripts should run 'as is', due to the nature of **vanilla** JavaScript.
-> As interpreter I'm mostly using the nice [**Node.js**](https://nodejs.org/).
-
-> [!TIP]
-> You could also take a look at my [**`make-nodejs.sh`**](https://github.com/kekse1/scripts/#make-nodejssh)
-> script within my own [**Scripts**](https://github.com/kekse1/scripts/) repository. This makes it easier
-> and more elegant to manage even multiple versions of **Node.js**.
 
 > [!NOTE]
 > **JFYI**: I really dislike [npm.js](https://npmjs.org/) and the inclusion of so many
