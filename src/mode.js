@@ -51,7 +51,7 @@ Reflect.defineProperty(mode, 'parse', { enumerable: true, value: (_string, _inte
 	var result = '';
 	var mode, specialMode = 0;
 	
-	for(var i = _string.length - 1, l = 0; i >= 0; ++l)
+	for(var i = _string.length - 1, l = 0; i > 0; ++l)
 	{
 		mode = 0;
 		
