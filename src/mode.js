@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://github.com/kekse1/javascripts/
- * v0.2.0
+ * v0.2.1
  *
  * A really old implementation, used that times in my < libjs.de > ... ^_^
  *
@@ -159,6 +159,11 @@ Reflect.defineProperty(mode, 'render', { enumerable: true, value: (_mode) => {
 	var sub;
 	
 	for(var i = (length === 3 ? 0 : 1), j = 1; i < octal.length; ++i, j += 3)
+	{
+		result.splice(j, 3, ... modes[Number(octal[i])].split(''));
+	}
+
+	if(length === 4)
 	{
 		sub = mode.special[Number(octal[0])];
 		
