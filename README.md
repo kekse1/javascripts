@@ -21,6 +21,7 @@ Every JavaScript is made by myself, arose out of necessity.. or because I found 
 <br><br>
 
 ### News
+* \[**2025-04-25**\] Published my old [**`mode`.js**](#modejs), v**0.2.0**;
 * \[**2025-04-22**\] Updated [**`reflection`.js**](#reflectionjs), v**3.2.0**;
 * \[**2025-04-07**\] Updated [**`clone`.js**](#clonejs), v**0.6.0**: supports `Date` now.
 * \[**2025-01-14**\] Created [**`newlines`.js**](#newlinesjs), v**0.1.0**;
@@ -38,18 +39,19 @@ Every JavaScript is made by myself, arose out of necessity.. or because I found 
 ## Index
 1. [News](#news)
 2. [Scripts](#scripts)
-    * [`dump`.js](#dumpjs)
+	* [`dump`.js](#dumpjs)
 	* [`offset`.js](#offsetjs)
 	* [`clone`.js](#clonejs)
 	* [`config`.js](#configjs)
 	* [`links`.js](#linksjs)
-    * [`bytes`.js](#bytesjs)
+	* [`bytes`.js](#bytesjs)
 	* [`reflection`.js](#reflectionjs)
 	* [`intersect`.js](#intersectjs)
 	* [`multiset`.js](#multisetjs)
 	* [`escaping`.js](#escapingjs)
-    * [`newlines`.js](#newlinesjs)
+	* [`newlines`.js](#newlinesjs)
 	* [`measure`.js](#measurejs)
+	* [`mode`.js](#modejs)
 	* [`animation`.js](#animationjs)
 	* [`moon`.js](#moonjs)
 	* [`fill`.js](#filljs)
@@ -314,6 +316,25 @@ data - `stderr` in this case for the count summary at the end.
 Two functions to measure the **throughput** of your data, in bytes per second (just
 remove the multiplication with 1000 für milliseconds); and the **ETA** ('Estimated
 Time Of Arrival') w/ `.remaining()`, in milliseconds (multiply *1000 for seconds).
+
+<br><br>
+
+### `mode.js`
+<a href="src/mode.js">
+<img id="modejs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60mode.js%60" />
+</a>
+
+A really old implementation, used in my (abandoned) [lib.js](https://libjs.de). ...
+
+Helper to handle file modes, usually integers in the [`fs.Stats`](https://nodejs.org/dist/latest/docs/api/fs.html#class-fsstats)
+@ [Node.js](https://nodejs.org/).
+
+* [Version v**0.2.0**](src/mode.js) (published **2025-04-25**)
+
+It brings Linux file system (permission) feelings. ...
+
+> [!NOTE]
+> TOTALLY **UNTESTED** (THIS TIME).. HOPE IT REALLY (STILL) WORKS.. ^_^
 
 <br><br>
 
