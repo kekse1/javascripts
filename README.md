@@ -9,8 +9,8 @@ which now only serves **`bash` shell** scripts.
 
 Most should work 'as is', maybe also in your web browser,
 maybe with [Node.js](https://nodejs.org/) (whereas at this
-time(!) I'm usually working with CommonJS modules (using
-`import` and `export`). So maybe you also want some
+time(!) I'm usually working with CommonJS modules, using
+`import` and `export`). So maybe you also want my own
 [`package.json`](src/package.json)?
 
 > [!NOTE]
