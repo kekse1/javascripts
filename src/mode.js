@@ -10,7 +10,7 @@
  *
  * It brings Linux file system (permission) feelings. ...
  *
- * PS: TOTALLY UNTESTED (THIS TIME).. HOPE IT REALLY (STILL) WORKS.. ^_^
+ * PS: Without BIG tests (now); .. but it *should* work.
  *
  */
 

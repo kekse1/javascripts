@@ -334,7 +334,7 @@ Helper to handle file modes, usually integers in the [`fs.Stats`](https://nodejs
 It brings Linux file system (permission) feelings. ...
 
 > [!NOTE]
-> TOTALLY **UNTESTED** (THIS TIME).. HOPE IT REALLY (STILL) WORKS.. ^_^
+> Without BIG tests (now); .. but it *should* work.
 
 <br><br>
 
