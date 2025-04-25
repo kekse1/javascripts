@@ -1,6 +1,9 @@
 <img src="https://kekse.biz/github.php?draw&override=github:javascripts" />
 
-Every JavaScript is made by myself, arose out of necessity.. or because I found it interesting.
+Every JavaScript is made by myself, arose out of necessity..
+or because I found it interesting. Many moved to here from
+my original [**Scripts** repository](https://github.com/kekse1/scripts/),
+which now only serves **`bash` shell** scripts.
 
 Most should work 'as is', maybe also in your web browser,
 maybe with [Node.js](https://nodejs.org/) (whereas at this
