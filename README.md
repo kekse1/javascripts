@@ -18,7 +18,7 @@ time(!) I'm usually working with CommonJS modules, using
 
 > [!NOTE]
 > **JFYI**: I really dislike [npm.js](https://npmjs.org/) and the inclusion of so many
-> modules I could write by myself as well. Don't expect me to use 'em.
+> modules I could write by myself as well. Don't expect me to use it..!
 
 <br><br>
 
