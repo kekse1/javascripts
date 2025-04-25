@@ -154,13 +154,13 @@ Reflect.defineProperty(mode, 'render', { enumerable: true, value: (_mode) => {
 		result[0] = '-';
 	}
 	
-	const modes = mode.modes;
+	const modes = mode.regular;
 	length = octal.length;
 	var sub;
 	
 	for(var i = (length === 3 ? 0 : 1), j = 1; i < octal.length; ++i, j += 3)
 	{
-		sub = mode.specialModes[Number(octal[0])];
+		sub = mode.special[Number(octal[0])];
 		
 		for(var i = 0, j = 3; i < sub.length; ++i, j += 3)
 		{
@@ -174,11 +174,11 @@ Reflect.defineProperty(mode, 'render', { enumerable: true, value: (_mode) => {
 	return result.join('');
 }});
 
-Reflect.defineProperty(mode, 'modes', { enumerable: true, get: () => {
+Reflect.defineProperty(mode, 'regular', { enumerable: true, get: () => {
 	return [ '---', '--x', '-w-', '-wx', 'r--', 'r-x', 'rw-', 'rwx' ];
 }});
 
-Reflect.defineProperty(mode, 'specialModes', { enumerable: true, get: () => {
+Reflect.defineProperty(mode, 'special', { enumerable: true, get: () => {
 	return [ '   ', '  t', ' s ', ' st', 's  ', 's t', 'ss ', 'sst' ];
 }});
 
