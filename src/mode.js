@@ -23,7 +23,7 @@ Reflect.defineProperty(mode, 'valid', { enumerable: true, value: (_value, _parse
 	if(_parse && typeof _value === 'string' && _value.length === 10)
 	{
 		// is (true) correct here!?!?
-		return mode.isValid(mode.parse(_value, true));
+		return mode.valid(mode.parse(_value, true));
 	}
 	else if(typeof _value !== 'number')
 	{
@@ -34,7 +34,7 @@ Reflect.defineProperty(mode, 'valid', { enumerable: true, value: (_value, _parse
 }});
 
 Reflect.defineProperty(mode, 'octal', { enumerable: true, value: (_value) => {
-	if(!mode.isValid(_value, false))
+	if(!mode.valid(_value, false))
 	{
 		return null;
 	}
@@ -114,7 +114,7 @@ Reflect.defineProperty(mode, 'parse', { enumerable: true, value: (_string, _inte
 }});
 
 Reflect.defineProperty(mode, 'render', { enumerable: true, value: (_mode) => {
-	if(!mode.isValid(_mode, false))
+	if(!mode.valid(_mode, false))
 	{
 		if(typeof _mode === 'string' && _mode.length === 10)
 		{
