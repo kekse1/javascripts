@@ -19,7 +19,7 @@ const mode = {};
 export default mode;
 
 //
-Reflect.defineProperty(mode, 'isValid', { enumerable: true, value: (_value, _parse = true) => {
+Reflect.defineProperty(mode, 'valid', { enumerable: true, value: (_value, _parse = true) => {
 	if(_parse && typeof _value === 'string' && _value.length === 10)
 	{
 		// is (true) correct here!?!?
