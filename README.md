@@ -331,7 +331,7 @@ A really old implementation, used in my (abandoned) [lib.js](https://libjs.de). 
 Helper to handle file modes, usually integers in the [`fs.Stats`](https://nodejs.org/dist/latest/docs/api/fs.html#class-fsstats)
 @ [Node.js](https://nodejs.org/).
 
-* [Version v**0.2.2**](src/mode.js) (published **2025-04-28**)
+* [Version v**0.2.2**](src/mode.js) (updated **2025-04-28**)
 
 It brings Linux file system (permission) feelings. ...
 
