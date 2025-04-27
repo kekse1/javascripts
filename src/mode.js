@@ -30,7 +30,7 @@ Reflect.defineProperty(mode, 'valid', { enumerable: true, value: (_value, _parse
 		return false;
 	}
 
-	return (typeof _value === 'number');
+	return ((typeof _value === 'number') && _value >= 0);
 }});
 
 Reflect.defineProperty(mode, 'octal', { enumerable: true, value: (_value) => {
