@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://github.com/kekse1/javascripts/
- * v0.2.1
+ * v0.2.2
  *
  * A really old implementation, used that times in my < libjs.de > ... ^_^
  *
@@ -20,17 +20,17 @@ export default mode;
 
 //
 Reflect.defineProperty(mode, 'valid', { enumerable: true, value: (_value, _parse = true) => {
-	if(_parse && typeof _value === 'string' && _value.length === 10)
+	if(_parse && typeof _value === 'string')
 	{
-		// is (true) correct here!?!?
-		return mode.valid(mode.parse(_value, true));
-	}
-	else if(typeof _value !== 'number')
-	{
+		if(_value.length === 9 || _value.length === 10)
+		{
+			return mode.valid(mode.parse(_value, true));
+		}
+
 		return false;
 	}
-	
-	return (_value >= 0 && _value <= 4095);
+
+	return (typeof _value === 'number');
 }});
 
 Reflect.defineProperty(mode, 'octal', { enumerable: true, value: (_value) => {
@@ -43,7 +43,22 @@ Reflect.defineProperty(mode, 'octal', { enumerable: true, value: (_value) => {
 }});
 
 Reflect.defineProperty(mode, 'parse', { enumerable: true, value: (_string, _integer = false) => {
-	if(typeof _string !== 'string' || _string.length !== 10)
+	if(typeof _string === 'number' && _string >= 0)
+	{
+		return _string;
+	}
+	else if(typeof _string !== 'string')
+	{
+		return null;
+	}
+
+	const nine = (_string.length === 9);
+
+	if(nine)
+	{
+		_string = '-' + _string;
+	}
+	else if(_string.length !== 10)
 	{
 		return null;
 	}
@@ -100,7 +115,11 @@ Reflect.defineProperty(mode, 'parse', { enumerable: true, value: (_string, _inte
 		result = result.padStart(4, '0');
 	}
 	
-	if(_string[0] === 'd')
+	if(nine)
+	{
+		result = result.substr(1);
+	}
+	else if(_string[0] === 'd')
 	{
 		result = '40' + result;
 	}
@@ -113,10 +132,11 @@ Reflect.defineProperty(mode, 'parse', { enumerable: true, value: (_string, _inte
 	return result;
 }});
 
-Reflect.defineProperty(mode, 'render', { enumerable: true, value: (_mode) => {
+Reflect.defineProperty(mode, 'render', { enumerable: true, value: (_mode, _perm = false) => {
 	if(!mode.valid(_mode, false))
 	{
-		if(typeof _mode === 'string' && _mode.length === 10)
+		if(typeof _mode === 'string' &&
+			(_mode.length === 9 || _mode.length === 10))
 		{
 			return _mode;
 		}
@@ -174,6 +194,11 @@ Reflect.defineProperty(mode, 'render', { enumerable: true, value: (_mode) => {
 				result.splice(j, 1, sub[i]);
 			}
 		}
+	}
+
+	if(_perm)
+	{
+		result.shift();
 	}
 
 	return result.join('');

@@ -23,7 +23,7 @@ time(!) I'm usually working with CommonJS modules, using
 <br><br>
 
 ### News
-* \[**2025-04-25**\] Published my old [**`mode`.js**](#modejs), v**0.2.1**;
+* \[**2025-04-25**\] Updated the [**`mode`.js**](#modejs), v**0.2.2**;
 * \[**2025-04-22**\] Updated [**`reflection`.js**](#reflectionjs), v**3.2.0**;
 * \[**2025-04-07**\] Updated [**`clone`.js**](#clonejs), v**0.6.0**: supports `Date` now.
 * \[**2025-01-14**\] Created [**`newlines`.js**](#newlinesjs), v**0.1.0**;
@@ -331,12 +331,9 @@ A really old implementation, used in my (abandoned) [lib.js](https://libjs.de). 
 Helper to handle file modes, usually integers in the [`fs.Stats`](https://nodejs.org/dist/latest/docs/api/fs.html#class-fsstats)
 @ [Node.js](https://nodejs.org/).
 
-* [Version v**0.2.1**](src/mode.js) (published **2025-04-25**)
+* [Version v**0.2.2**](src/mode.js) (published **2025-04-28**)
 
 It brings Linux file system (permission) feelings. ...
-
-> [!NOTE]
-> Without BIG tests (now); .. but it *should* work.
 
 <br><br>
 
