@@ -107,16 +107,15 @@ another parameter combination you can even get to know how many columns a specif
 
 * [Version v**0.6.0**](src/clone.js) (updated **2025-04-07**)
 
-My `Reflect.clone()` extension (because JavaScript doesn't include it natively)..
+My `Reflect.clone()` extension, because JavaScript doesn't support
+**DEEP** cloning natively.
 
-.. and it works great, really! **:-)** Also checks `Reflect.isExtensible()`, so even functions with
-extensions are being fully cloned. And even the functions themselves (if `_function === true`; see also
-`DEFAULT_CLONE_FUNCTION`).. and - utilizing a `Map` - every instance will only get cloned **once**, so
-**no circular dependencies** occure! **;-)**
+.. and it works great, really! **:-)** Also checks `Reflect.isExtensible()`,
+so even functions with extensions are being fully cloned. The functions 'per se'
+can also be cloned (optionally, if **not** 'native' ones).
 
-> [!INFO]
-> Since v**0.5.0** the function also supports any type of `TypedArray`.
-> And since v**0.6.0** also supports `Date` correctly.
+Without **circular dependencies** since I'm using a [**`Map`**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
+to just return any item which has already been cloned.
 
 <br><br>
 
