@@ -6,11 +6,23 @@
  * A really old implementation, used that times in my < libjs.de > ... ^_^
  *
  * Helper to handle file modes, which are usually integers in the
- * `fs.Stats` of Node.js: < https://nodejs.org/dist/latest/docs/api/fs.html#class-fsstats >.
+ * `fs.Stats` of Node.js: < https://nodejs.org/dist/latest/docs/api/fs.html#class-fsstats >
  *
  * It brings Linux file system (permission) feelings. ...
  *
- * PS: Without BIG tests (now); .. but it *should* work.
+ */
+
+/*
+ *
+ * TODO
+ *
+ * socket: 0xC000
+ * symlink: 0xA000
+ * regular: 0x8000
+ * block: 0x6000
+ * dir: 0x4000
+ * char: 0x2000
+ * fifo: 0x1000
  *
  */
 
