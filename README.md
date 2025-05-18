@@ -60,6 +60,7 @@ time(!) I'm usually working with CommonJS modules, using
 	* [`chess`.js](#chessjs)
 	* [`street-split`.js](#street-splitjs)
 	* [`fold.css`.js](#foldcssjs)
+	* [`levenshtein`.js](#levenshteinjs)
 3. [Contact](#contact)
 4. [Copyright and License](#copyright-and-license)
 
@@ -427,6 +428,15 @@ but the code is/was a mess!
 
 > [!IMPORTANT]
 > Early version, so only the real basics are covered.
+
+<br><br>
+
+### `levenshtein.js`
+<a href="https://github.com/kekse1/levenshtein.js/">
+<img id="levenshteinjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60levenshtein.js%60" />
+</a>
+
+This one has it's [own repository](https://github.com/kekse1/levenshtein.js/).
 
 <br><br>
 
