@@ -23,6 +23,7 @@ time(!) I'm usually working with CommonJS modules, using
 <br><br>
 
 ### News
+* \[**2025-05-18**\] Link to my [**`levenshtein`.js**](#levenshteinjs);
 * \[**2025-04-28**\] Updated the [**`mode`.js**](#modejs), v**0.2.2**;
 * \[**2025-04-22**\] Updated [**`reflection`.js**](#reflectionjs), v**3.2.0**;
 * \[**2025-04-07**\] Updated [**`clone`.js**](#clonejs), v**0.6.0**: supports `Date` now.
