@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://github.com/kekse1/javascripts/
- * v0.2.2
+ * v0.3.0
  *
  * A really old implementation, used that times in my < libjs.de > ... ^_^
  *
@@ -13,17 +13,8 @@
  */
 
 /*
- *
- * TODO
- *
- * socket: 0xC000
- * symlink: 0xA000
- * regular: 0x8000
- * block: 0x6000
- * dir: 0x4000
- * char: 0x2000
- * fifo: 0x1000
- *
+ * TODO: the new types also in 'parse()', 'render()', etc.!
+ * TODO: and the '.type()' w/ 'isValid()' ETC..
  */
 
 //
@@ -186,7 +177,7 @@ Reflect.defineProperty(mode, 'render', { enumerable: true, value: (_mode, _perm 
 		result[0] = '-';
 	}
 	
-	const modes = mode.regular;
+	const modes = mode.REGULAR;
 	length = octal.length;
 	var sub;
 	
@@ -197,7 +188,7 @@ Reflect.defineProperty(mode, 'render', { enumerable: true, value: (_mode, _perm 
 
 	if(length === 4)
 	{
-		sub = mode.special[Number(octal[0])];
+		sub = mode.SPECIAL[Number(octal[0])];
 		
 		for(var i = 0, j = 3; i < sub.length; ++i, j += 3)
 		{
@@ -216,13 +207,58 @@ Reflect.defineProperty(mode, 'render', { enumerable: true, value: (_mode, _perm 
 	return result.join('');
 }});
 
-Reflect.defineProperty(mode, 'regular', { enumerable: true, get: () => {
+//
+//todo/isvalid, etc..
+//
+Reflect.defineProperty(mode, 'type', { enumerable: true, value: (_mode, _long = true) => {
+	const types = (_long ? mode.TYPES : mode.TYPE);
+	const result = (_mode & 0o170000);
+	const mask = mode.MASK;
+	
+	for(var i = 0; i < types.length; ++i)
+	{
+		if(mask[i] === result)
+		{
+			return types[i];
+		}
+	}
+	
+	return '';
+}});
+
+Reflect.defineProperty(mode, 'REGULAR', { enumerable: true, get: () => {
 	return [ '---', '--x', '-w-', '-wx', 'r--', 'r-x', 'rw-', 'rwx' ];
 }});
 
-Reflect.defineProperty(mode, 'special', { enumerable: true, get: () => {
+Reflect.defineProperty(mode, 'SPECIAL', { enumerable: true, get: () => {
 	return [ '   ', '  t', ' s ', ' st', 's  ', 's t', 'ss ', 'sst' ];
 }});
 
-//
+Reflect.defineProperty(mode, 'TYPE', { enumerable: true, get: () => {
+	return [ 'p', 'c', 'd', 'b', '-', 'l', 's' ];
+}});
 
+Reflect.defineProperty(mode, 'TYPES', { enumerable: true, get: () => {
+	return [
+		'fifo',
+		'char',
+		'directory',
+		'block',
+		'file',
+		'symlink',
+		'socket' ];
+}});
+
+Reflect.defineProperty(mode, 'MASK', { enumerable: true, get: () => {
+	return [
+		0x1000,	// fifo
+		0x2000,	// char
+		0x4000,	// directory
+		0x6000,	// block
+		0x8000,	// regular
+		0xA000,	// symlink
+		0xC000	// socket
+	];
+}});
+
+//
