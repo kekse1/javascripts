@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://github.com/kekse1/javascripts/
- * v0.3.0
+ * v0.3.1
  *
  * A really old implementation, used that times in my < libjs.de > ... ^_^
  *
@@ -211,15 +211,19 @@ Reflect.defineProperty(mode, 'render', { enumerable: true, value: (_mode, _perm 
 //todo/isvalid, etc..
 //
 Reflect.defineProperty(mode, 'type', { enumerable: true, value: (_mode, _long = true) => {
-	const types = (_long ? mode.TYPES : mode.TYPE);
 	const result = (_mode & 0o170000);
 	const mask = mode.MASK;
 	
-	for(var i = 0; i < types.length; ++i)
+	for(var i = 0; i < mask.length; ++i)
 	{
 		if(mask[i] === result)
 		{
-			return types[i];
+			if(_long)
+			{
+				return mode.TYPES[i];
+			}
+
+			return mode.TYPE[i];
 		}
 	}
 	
