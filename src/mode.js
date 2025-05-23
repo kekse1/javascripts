@@ -29,7 +29,7 @@ Reflect.defineProperty(mode, 'valid', { enumerable: true, value: (_value, _parse
 			}
 			else if(!Number.isNaN(_value = parseInt(_value, 8)))
 			{
-				return true;
+				return mode.valid(_value, false);
 			}
 
 			return false;
