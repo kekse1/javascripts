@@ -51,11 +51,7 @@ Reflect.defineProperty(mode, 'octal', { enumerable: true, value: (_value, _integ
 				return null;
 			}
 		}
-		else if(Number.isNaN(_value = parseInt(_value, 8)))
-		{
-			return null;
-		}
-		else if(!mode.valid(_value, false))
+		else if(!mode.valid(_value = parseInt(_value, 8), false))
 		{
 			return null;
 		}
@@ -207,7 +203,7 @@ Reflect.defineProperty(mode, 'parse', { enumerable: true, value: (_string, _inte
 	
 	return result;
 }});
-
+zzzzzzzz
 Reflect.defineProperty(mode, 'render', { enumerable: true, value: (_mode, _perm) => {
 	if(!mode.valid(_mode, false))
 	{
