@@ -98,7 +98,7 @@ Reflect.defineProperty(mode, 'parse', { enumerable: true, value: (_string, _inte
 		
 		_string = mode.render(_string, null);
 	}
-	else if(_string.length !== 9 && _string.length !== 10)
+	else if(_string.length > 10)
 	{
 		return null;
 	}
