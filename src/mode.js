@@ -203,7 +203,7 @@ Reflect.defineProperty(mode, 'parse', { enumerable: true, value: (_string, _inte
 	
 	return result;
 }});
-zzzzzzzz
+
 Reflect.defineProperty(mode, 'render', { enumerable: true, value: (_mode, _perm) => {
 	if(!mode.valid(_mode, false))
 	{
