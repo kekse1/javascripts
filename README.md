@@ -23,7 +23,7 @@ time(!) I'm usually working with CommonJS modules, using
 <br><br>
 
 ### News
-* \[**2025-05-23**\] Updated the [**`mode`.js**](#modejs), v**0.4.0**;
+* \[**2025-05-23**\] Updated the [**`mode`.js**](#modejs), v**0.4.1**;
 * \[**2025-05-18**\] Link to my [**`levenshtein`.js**](#levenshteinjs);
 * \[**2025-04-22**\] Updated [**`reflection`.js**](#reflectionjs), v**3.2.0**;
 * \[**2025-04-07**\] Updated [**`clone`.js**](#clonejs), v**0.6.0**: supports `Date` now.
@@ -333,7 +333,7 @@ in the [Node.js](https://nodejs.org/). But surely can also be used in general fo
 A really old implementation, used that times in my < libjs.de > ...
 ... now with better "file type" integration, and last improvements.
 
-* [Version v**0.4.0**](src/mode.js) (updated **2025-05-23**)
+* [Version v**0.4.1**](src/mode.js) (updated **2025-05-23**)
 
 It brings Linux file system (mode/permission) feelings.
 

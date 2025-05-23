@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://github.com/kekse1/javascripts/
- * v0.4.0
+ * v0.4.1
  *
  * Helper to handle file modes, which are usually integers in the
  * `fs.Stats` of Node.js: < https://nodejs.org/dist/latest/docs/api/fs.html#class-fsstats >
@@ -89,7 +89,7 @@ Reflect.defineProperty(mode, 'parse', { enumerable: true, value: (_string, _inte
 	{
 		return null;
 	}
-	else if(_string.length <= 4)
+	else if(_string.length < 9)
 	{
 		if(Number.isNaN(_string = parseInt(_string, 8)))
 		{
