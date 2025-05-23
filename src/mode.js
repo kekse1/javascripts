@@ -202,7 +202,7 @@ Reflect.defineProperty(mode, 'parse', { enumerable: true, value: (_string, _inte
 	
 	if(_perm)
 	{
-		result = mode.octal(result, true);
+		result = (result & 0o7777);
 	}
 	
 	return result;
