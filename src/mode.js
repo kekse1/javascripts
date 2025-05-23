@@ -330,9 +330,9 @@ Reflect.defineProperty(mode, 'type', { enumerable: true, value: (_mode, _long = 
 		{
 			return null;
 		}
-		else
+		else if(!mode.valid(_mode = mode.parse(_mode, true), false))
 		{
-			_mode = mode.parse(_mode, true);
+			return null;
 		}
 	}
 	else if(!mode.valid(_mode, false))
