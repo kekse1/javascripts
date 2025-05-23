@@ -19,11 +19,20 @@ export default mode;
 
 //
 Reflect.defineProperty(mode, 'valid', { enumerable: true, value: (_value, _parse = true) => {
-	if(_parse && typeof _value === 'string')
+	if(typeof _value === 'string')
 	{
-		if(_value.length === 9 || _value.length === 10)
+		if(_parse)
 		{
-			return mode.valid(mode.parse(_value, true));
+			if(_value.length === 9 || _value.length === 10)
+			{
+				return mode.valid(mode.parse(_value, true));
+			}
+			else if(!Number.isNaN(_value = parseInt(_value, 8)))
+			{
+				return true;
+			}
+
+			return false;
 		}
 
 		return false;
