@@ -213,7 +213,7 @@ Reflect.defineProperty(mode, 'render', { enumerable: true, value: (_mode, _perm 
 Reflect.defineProperty(mode, 'type', { enumerable: true, value: (_mode, _long = null) => {
 	const result = (_mode & 0o170000);
 
-	if(_long === null)
+	if(typeof _long !== 'boolean')
 	{
 		return result;
 	}
