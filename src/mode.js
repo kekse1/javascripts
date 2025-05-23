@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://github.com/kekse1/javascripts/
- * v0.4.0
+ * v0.4.2
  *
  * Helper to handle file modes, which are usually integers in the
  * `fs.Stats` of Node.js: < https://nodejs.org/dist/latest/docs/api/fs.html#class-fsstats >
@@ -286,7 +286,7 @@ Reflect.defineProperty(mode, 'render', { enumerable: true, value: (_mode, _perm)
 		result[0] = '-';
 	}
 	
-	const modes = mode.REGULAR;
+	const modes = mode.regular;
 	length = octal.length;
 	var sub;
 	
@@ -297,7 +297,7 @@ Reflect.defineProperty(mode, 'render', { enumerable: true, value: (_mode, _perm)
 
 	if(length === 4)
 	{
-		sub = mode.SPECIAL[Number(octal[0])];
+		sub = mode.special[Number(octal[0])];
 		
 		for(var i = 0, j = 3; i < sub.length; ++i, j += 3)
 		{
@@ -369,11 +369,11 @@ Reflect.defineProperty(mode, 'type', { enumerable: true, value: (_mode, _long = 
 	return '';
 }});
 
-Reflect.defineProperty(mode, 'REGULAR', { enumerable: true, get: () => {
+Reflect.defineProperty(mode, 'regular', { enumerable: true, get: () => {
 	return [ '---', '--x', '-w-', '-wx', 'r--', 'r-x', 'rw-', 'rwx' ];
 }});
 
-Reflect.defineProperty(mode, 'SPECIAL', { enumerable: true, get: () => {
+Reflect.defineProperty(mode, 'special', { enumerable: true, get: () => {
 	return [ '   ', '  t', ' s ', ' st', 's  ', 's t', 'ss ', 'sst' ];
 }});
 
