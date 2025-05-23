@@ -75,7 +75,7 @@ Reflect.defineProperty(mode, 'octal', { enumerable: true, value: (_value, _integ
 	return result.toString(8);
 }});
 
-Reflect.defineProperty(mode, 'parse', { enumerable: true, value: (_string, _integer = false) => {
+Reflect.defineProperty(mode, 'parse', { enumerable: true, value: (_string, _integer = false, _perm = false) => {
 	if(typeof _string === 'number')
 	{
 		if(mode.valid(_string, false))
@@ -113,6 +113,7 @@ Reflect.defineProperty(mode, 'parse', { enumerable: true, value: (_string, _inte
 	
 	if(nine)
 	{
+		_perm = true;
 		_string = '-' + _string;
 	}
 	
@@ -197,6 +198,11 @@ Reflect.defineProperty(mode, 'parse', { enumerable: true, value: (_string, _inte
 	if(_integer)
 	{
 		result = parseInt(result, 8);
+	}
+	
+	if(_perm)
+	{
+		result = mode.octal(result, true);
 	}
 	
 	return result;
