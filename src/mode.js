@@ -352,10 +352,10 @@ Reflect.defineProperty(mode, 'type', { enumerable: true, value: (_mode, _long = 
 		{
 			if(_long)
 			{
-				return mode.TYPES[i];
+				return mode.long[i];
 			}
 
-			return mode.TYPE[i];
+			return mode.short[i];
 		}
 	}
 	
@@ -370,11 +370,11 @@ Reflect.defineProperty(mode, 'SPECIAL', { enumerable: true, get: () => {
 	return [ '   ', '  t', ' s ', ' st', 's  ', 's t', 'ss ', 'sst' ];
 }});
 
-Reflect.defineProperty(mode, 'TYPE', { enumerable: true, get: () => {
+Reflect.defineProperty(mode, 'short', { enumerable: true, get: () => {
 	return [ 'p', 'c', 'd', 'b', '-', 'l', 's' ];
 }});
 
-Reflect.defineProperty(mode, 'TYPES', { enumerable: true, get: () => {
+Reflect.defineProperty(mode, 'long', { enumerable: true, get: () => {
 	return [
 		'fifo',
 		'char',
