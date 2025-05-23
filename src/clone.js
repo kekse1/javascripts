@@ -1,7 +1,7 @@
 // 
 // Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
 // https://kekse.biz/ https://github.com/kekse1/javascripts/
-// v0.6.0
+// v0.7.0
 // 
 // Just a tiny function to *really* clone objects (etc.); .. with all types, not only JSON supported ones
 // or so (sometimes the web referes to just `JSON.parse(JSON.stringify({}))`);
@@ -23,13 +23,26 @@ const isTypedArray = (_item) => { var result;
 		result = (result === 'TypedArray'); }
 	catch(_err) { result = false; }
 	return result; };
-const isDate = (_item) => { try {
-	if(_item.constructor.name === 'Date') return true; }
-	catch(_err) {} return false; };
+// i really do *not* want `instanceof` (see 'reflection.js'):
+const is = (_item, _type) => { if(typeof _type !== 'string') _type = null;
+	var result; try { result = _item.constructor.name; }
+	catch(_err) { if(_type !== null) return false; return ''; }
+	if(_type !== null) return (result === _type); return result; };
+const isDate = (_item) => is(_item, 'Date');
+const checkForMapAndSetTypes = (_item) => { const type = is(_item);
+	if(!type) return null; switch(type) {
+		case 'Map': case 'Set': case 'WeakMap': case 'WeakSet': return type; }
+	return null; };
 
 //
 Reflect.defineProperty(Reflect, 'clone', { value: (_object, _map = null, _function = DEFAULT_CLONE_FUNCTION, ... _clone_args) => {
 	if(!_map) _map = new Map(); else if(_map.has(_object)) return _map.get(_object); var result;
+	var chk = checkForMapAndSetTypes(_object); if(chk) { switch(chk) {
+		case 'Map': result = new Map(_object); break;
+		case 'Set': result = new Set(_object); break;
+		case 'WeakMap': result = new WeakMap(_object); break;
+		case 'WeakSet': result = new WeakSet(_object); break; }
+		_map.set(_object, result); return result; }
 	if(isDate(_object)) { result = new Date(_object); _map.set(_object, result); return result; }
 	if(isTypedArray(_object)) { result = _object.slice(); _map.set(_object, result); return result; }
 	if(!Reflect.isExtensible(_object)) { _map.set(_object, _object); return _object; }

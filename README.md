@@ -23,10 +23,10 @@ time(!) I'm usually working with CommonJS modules, using
 <br><br>
 
 ### News
+* \[**2025-05-24**\] Update in my deep-[**`clone`.js**](#clonejs), v**0.7.0**;
 * \[**2025-05-23**\] Updated the [**`mode`.js**](#modejs), v**0.4.2**;
 * \[**2025-05-18**\] Link to my [**`levenshtein`.js**](#levenshteinjs);
 * \[**2025-04-22**\] Updated [**`reflection`.js**](#reflectionjs), v**3.2.0**;
-* \[**2025-04-07**\] Updated [**`clone`.js**](#clonejs), v**0.6.0**: supports `Date` now.
 * \[**2025-01-14**\] Created [**`newlines`.js**](#newlinesjs), v**0.1.0**;
 * \[**2025-01-10**\] Update in my [**`config`.js**](#configjs), to v**0.8.0**;
 * \[**2024-12-24**\] Uploaded my [**`chess`.js**](#chessjs), v**0.2.1**;
@@ -107,7 +107,7 @@ another parameter combination you can even get to know how many columns a specif
 <img id="clonejs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60clone.js%60" />
 </a>
 
-* [Version v**0.6.0**](src/clone.js) (updated **2025-04-07**)
+* [Version v**0.7.0**](src/clone.js) (updated **2025-05-24**)
 
 My `Reflect.clone()` extension, because JavaScript doesn't support
 **DEEP** cloning natively.
