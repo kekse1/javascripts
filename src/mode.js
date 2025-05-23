@@ -319,13 +319,20 @@ Reflect.defineProperty(mode, 'render', { enumerable: true, value: (_mode, _perm)
 Reflect.defineProperty(mode, 'type', { enumerable: true, value: (_mode, _long = null, _fallback = '-') => {
 	if(typeof _mode === 'string')
 	{
-		if(_mode.length >= 9 && _mode.length <= 10)
+		if(_mode.length < 9)
 		{
-			_mode = mode.parse(_mode, true);
+			if(!mode.valid(_mode = parseInt(_mode, 8), false))
+			{
+				return null;
+			}
+		}
+		else if(_mode.length > 10)
+		{
+			return null;
 		}
 		else
 		{
-			return null;
+			_mode = mode.parse(_mode, true);
 		}
 	}
 	else if(!mode.valid(_mode, false))
