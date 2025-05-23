@@ -25,7 +25,7 @@ Reflect.defineProperty(mode, 'valid', { enumerable: true, value: (_value, _parse
 		{
 			if(_value.length === 9 || _value.length === 10)
 			{
-				return mode.valid(mode.parse(_value, true));
+				return mode.valid(mode.parse(_value, true), false);
 			}
 			else if(!Number.isNaN(_value = parseInt(_value, 8)))
 			{
