@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://github.com/kekse1/javascripts/
- * v0.4.1
+ * v0.4.0
  *
  * Helper to handle file modes, which are usually integers in the
  * `fs.Stats` of Node.js: < https://nodejs.org/dist/latest/docs/api/fs.html#class-fsstats >
@@ -100,7 +100,7 @@ Reflect.defineProperty(mode, 'parse', { enumerable: true, value: (_string, _inte
 			return null;
 		}
 	}
-	else if(_string.length < 9 || _string.length > 10)
+	else if(_string.length !== 9 && _string.length !== 10)
 	{
 		return null;
 	}
