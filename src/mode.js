@@ -1,20 +1,16 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://github.com/kekse1/javascripts/
- * v0.3.2
- *
- * A really old implementation, used that times in my < libjs.de > ... ^_^
+ * v0.4.0
  *
  * Helper to handle file modes, which are usually integers in the
  * `fs.Stats` of Node.js: < https://nodejs.org/dist/latest/docs/api/fs.html#class-fsstats >
  *
- * It brings Linux file system (permission) feelings. ...
+ * A really old implementation, used that times in my < libjs.de > ...
+ * ... now with better "file type" integration, and last improvements.
  *
- */
-
-/*
- * TODO: the new types also in 'parse()', 'render()', etc.!
- * TODO: and the '.type()' w/ 'isValid()' ETC..
+ * It brings Linux file system (mode/permission) feelings.
+ *
  */
 
 //
@@ -36,13 +32,20 @@ Reflect.defineProperty(mode, 'valid', { enumerable: true, value: (_value, _parse
 	return ((typeof _value === 'number') && _value >= 0);
 }});
 
-Reflect.defineProperty(mode, 'octal', { enumerable: true, value: (_value) => {
+Reflect.defineProperty(mode, 'octal', { enumerable: true, value: (_value, _integer = false) => {
 	if(!mode.valid(_value, false))
 	{
 		return null;
 	}
 	
-	return (_value & 0o7777).toString(8);
+	const result = (_value & 0o7777);
+	
+	if(_integer)
+	{
+		return result;
+	}
+	
+	return result.toString(8);
 }});
 
 Reflect.defineProperty(mode, 'parse', { enumerable: true, value: (_string, _integer = false) => {
@@ -54,77 +57,96 @@ Reflect.defineProperty(mode, 'parse', { enumerable: true, value: (_string, _inte
 	{
 		return null;
 	}
+	else if(_string.length < 9 || _string.length > 10)
+	{
+		return null;
+	}
 
+	var result = '';
+	var modus, specialModus = 0;
 	const nine = (_string.length === 9);
-
+	
 	if(nine)
 	{
 		_string = '-' + _string;
 	}
-	else if(_string.length !== 10)
-	{
-		return null;
-	}
-	
-	var result = '';
-	var mode, specialMode = 0;
 	
 	for(var i = _string.length - 1, l = 0; i > 0; ++l)
 	{
-		mode = 0;
+		modus = 0;
 		
 		for(var j = i, k = 0; j > 0 && k < 3; --j, ++k, --i) switch(_string[j])
 		{
 			case 't':
 				if(l === 0)
 				{
-					specialMode += 1;
+					specialModus += 1;
 				}
 				
-				mode += 1;
+				modus += 1;
 				break;
 			case 's':
 				if(l === 1)
 				{
-					specialMode += 2;
+					specialModus += 2;
 				}
 				else
 				{
-					specialMode += 4;
+					specialModus += 4;
 				}
 				
-				mode += 1;
+				modus += 1;
 				break;
 			case 'x':
-				mode += 1;
+				modus += 1;
 				break;
 			case 'w':
-				mode += 2;
+				modus += 2;
 				break;
 			case 'r':
-				mode += 4;
+				modus += 4;
 				break;
 		}
 		
-		result = mode.toString(8) + result;
+		result = modus.toString(8) + result;
 	}
 	
-	if(specialMode > 0)
+	if(specialModus > 0)
 	{
-		result = specialMode.toString(8) + result;
+		result = specialModus.toString(8) + result;
 	}
 	else
 	{
 		result = result.padStart(4, '0');
 	}
-	
+
 	if(nine)
 	{
 		result = result.substr(1);
 	}
-	else if(_string[0] === 'd')
+	else switch(_string[0])
 	{
-		result = '40' + result;
+		case 'p':
+			result = '1' + result;
+			break;
+		case 'c':
+			result = '2' + result;
+			break;
+		case 'd':
+			result = '4' + result;
+			break;
+		case 'b':
+			result = '6' + result;
+			break;
+		case '-':
+			result = '10' + result;
+			break;
+		case 'l':
+			result = '12' + result;
+			break;
+		case 's':
+			result = '14' + result;
+			break;
 	}
 	
 	if(_integer)
@@ -135,36 +157,76 @@ Reflect.defineProperty(mode, 'parse', { enumerable: true, value: (_string, _inte
 	return result;
 }});
 
-Reflect.defineProperty(mode, 'render', { enumerable: true, value: (_mode, _perm = false) => {
+Reflect.defineProperty(mode, 'render', { enumerable: true, value: (_mode, _perm) => {
 	if(!mode.valid(_mode, false))
 	{
-		if(typeof _mode === 'string' &&
-			(_mode.length === 9 || _mode.length === 10))
+		if(typeof _mode === 'string')
 		{
-			return _mode;
+			if(_mode.length === 9 || _mode.length === 10)
+			{
+				if(!mode.valid(_mode = mode.parse(_mode, true), false))
+				{
+					return null;
+				}
+			}
+			else if(!mode.valid(_mode = parseInt(_mode, 8), false))
+			{
+				return null;
+			}
 		}
-		
-		return null;
+		else
+		{
+			return null;
+		}
+	}
+	
+	if(typeof _perm !== 'boolean')
+	{
+		_perm = !(_mode & 0o170000);
 	}
 	
 	var octal = _mode.toString(8).padStart(3, '0');
 	const result = new Array(10);
 	for(var i = 0; i < result.length; ++i) result[i] = [''];
 	var length = octal.length;
-	
+
 	if(length === 4 && octal[0] === '0')
 	{
 		octal = octal.substr(1);
 	}
 	else if(length > 4)
 	{
-		if(octal[0] === '4')
+		if(octal.startsWith('140'))
+		{
+			result[0] = 's';
+		}
+		else if(octal.startsWith('120'))
+		{
+			result[0] = 'l';
+		}
+		else if(octal.startsWith('100'))
+		{
+			result[0] = '-';
+		}
+		else if(octal.startsWith('60'))
+		{
+			result[0] = 'b';
+		}
+		else if(octal.startsWith('40'))
 		{
 			result[0] = 'd';
 		}
+		else if(octal.startsWith('20'))
+		{
+			result[0] = 'c';
+		}
+		else if(octal.startsWith('10'))
+		{
+			result[0] = 'p';
+		}
 		else
 		{
-			result[0] = '-';
+			result[0] = '';
 		}
 		
 		if((octal = octal.substr(-4)).length === 4 && octal[0] === '0')
@@ -207,13 +269,30 @@ Reflect.defineProperty(mode, 'render', { enumerable: true, value: (_mode, _perm 
 	return result.join('');
 }});
 
-//
-//todo/isvalid, etc..
-//
-Reflect.defineProperty(mode, 'type', { enumerable: true, value: (_mode, _long = null) => {
+Reflect.defineProperty(mode, 'type', { enumerable: true, value: (_mode, _long = null, _fallback = '-') => {
+	if(typeof _mode === 'string')
+	{
+		if(_mode.length >= 9 && _mode.length <= 10)
+		{
+			_mode = mode.parse(_mode, true);
+		}
+		else
+		{
+			return null;
+		}
+	}
+	else if(!mode.valid(_mode, false))
+	{
+		return null;
+	}
+
 	const result = (_mode & 0o170000);
 
-	if(typeof _long !== 'boolean')
+	if(!result)
+	{
+		return _fallback;
+	}
+	else if(typeof _long !== 'boolean')
 	{
 		return result;
 	}

@@ -23,7 +23,7 @@ time(!) I'm usually working with CommonJS modules, using
 <br><br>
 
 ### News
-* \[**2025-04-28**\] Updated the [**`mode`.js**](#modejs), v**0.3.2**;
+* \[**2025-05-23**\] Updated the [**`mode`.js**](#modejs), v**0.4.0**;
 * \[**2025-05-18**\] Link to my [**`levenshtein`.js**](#levenshteinjs);
 * \[**2025-04-22**\] Updated [**`reflection`.js**](#reflectionjs), v**3.2.0**;
 * \[**2025-04-07**\] Updated [**`clone`.js**](#clonejs), v**0.6.0**: supports `Date` now.
@@ -327,18 +327,15 @@ Time Of Arrival') w/ `.remaining()`, in milliseconds (multiply *1000 for seconds
 <img id="modejs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60mode.js%60" />
 </a>
 
-A really old implementation, used in my (abandoned) [lib.js](https://libjs.de). ...
-
 Helper to handle file modes, usually integers in the [`fs.Stats`](https://nodejs.org/dist/latest/docs/api/fs.html#class-fsstats)
-@ [Node.js](https://nodejs.org/).
+in the [Node.js](https://nodejs.org/). But surely can also be used in general for linux filesystem modes, etc.
 
-* [Version v**0.3.2**](src/mode.js) (updated **2025-05-22**)
+A really old implementation, used that times in my < libjs.de > ...
+... now with better "file type" integration, and last improvements.
 
-It brings Linux file system (permission) feelings. ...
+* [Version v**0.4.0**](src/mode.js) (updated **2025-05-23**)
 
-> [!NOTE]
-> New **TODO**: The new '.type()' etc. needs a bit improvement,
-> and it needs to be integrated into the '.parse()' and '.render()', etc..
+It brings Linux file system (mode/permission) feelings.
 
 <br><br>
 
