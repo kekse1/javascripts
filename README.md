@@ -220,14 +220,6 @@ So I'm using `[Reflect.]is()` and `[Reflect.]was()` (for a long time, so it's we
 and works great). You'll find _more description_ in this [`reflection`.js](src/reflection.js), in
 the starting comment on top of the file.
 
-> [!IMPORTANT]
-> Since v**2.1.0** the additional `was()` parameters (varargs) mean **AND**, **not** **OR**
-> any longer.. but the `is()` stayed the same (**OR**);
-
-> [!TIP]
-> In v**3.1.0** **improved/fixed** `Object.{has,get,set,remove}()`** (traversing functions)!
-> And in v**3.3.0** now optionally removing the `bound ` string prefix. See also `DEFAULT_BOUND_HIDE`;
-
 <br><br>
 
 ### `intersect.js`
