@@ -23,10 +23,10 @@ time(!) I'm usually working with CommonJS modules, using
 <br><br>
 
 ### News
+* \[**2025-05-31**\] Updated the [**`reflection`.js**](#reflectionjs), v**3.3.0**;
 * \[**2025-05-24**\] Update in my deep-[**`clone`.js**](#clonejs), v**0.7.0**;
 * \[**2025-05-23**\] Updated the [**`mode`.js**](#modejs), v**0.4.2**;
 * \[**2025-05-18**\] Link to my [**`levenshtein`.js**](#levenshteinjs);
-* \[**2025-04-22**\] Updated [**`reflection`.js**](#reflectionjs), v**3.2.0**;
 * \[**2025-01-14**\] Created [**`newlines`.js**](#newlinesjs), v**0.1.0**;
 * \[**2025-01-10**\] Update in my [**`config`.js**](#configjs), to v**0.8.0**;
 * \[**2024-12-24**\] Uploaded my [**`chess`.js**](#chessjs), v**0.2.1**;
@@ -209,7 +209,7 @@ on disk or via network transmission, etc.
 <img id="reflectionjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60reflection.js%60" />
 </a>
 
-* [Version v**3.2.0**](src/reflection.js) (updated **2025-04-22**)
+* [Version v**3.3.0**](src/reflection.js) (updated **2025-05-31**)
 
 My solution for JavaScript's `instanceof` problem, so when in multiple environments
 the classes are initialized/declared not once. In this case, comparing two environments,
@@ -226,6 +226,7 @@ the starting comment on top of the file.
 
 > [!TIP]
 > In v**3.1.0** **improved/fixed** `Object.{has,get,set,remove}()`** (traversing functions)!
+> And in v**3.3.0** now optionally removing the `bound ` string prefix. See also `DEFAULT_BOUND_HIDE`;
 
 <br><br>
 

@@ -1,7 +1,7 @@
 //
 // Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
 // https://kekse.biz/ https://github.com/kekse1/javascripts/
-// v3.2.0
+// v3.3.0
 //
 // The problem was: depending on your JavaScript *environment*, which also changes
 // e.g. when using <iframe> or so, the base classes are being initialized/declared/..
@@ -27,12 +27,14 @@
 // and I recommend you to always use this instead of `instanceof` or smth. like it.
 //
 // UPDATE v3.1.0: Improved the 'Object.{has,get,set,remove}()' functions (and made readable).
+// UPDATE v3.3.0: the "bound *" result *can* optionally be changed to w/o "bound"; see also "DEFAULT_BOUND_HIDE".
 //
 
 //
 const DEFAULT_OBJECT_SEP = '.';		// path separator/delimiter
 const DEFAULT_OBJECT_NUL = true;	// when creating intermediate objects, use `Object.create(null)` (if not arrays at all)!?
 const DEFAULT_OBJECT_SET_BOOL = false;	// `Object.set()` will return the set state, instead of the replaced item (if any)..
+const DEFAULT_BOUND_HIDE = true;	// without e.g. "bound class"..
 
 //
 Reflect.defineProperty(Math, 'int', { value: (_value, _inverse = false) => {
@@ -67,12 +69,13 @@ Reflect.defineProperty(Reflect, 'getPrototypesOf', { value: (_item) => {
 	} while(true); } catch(_err) {}; return result; }});
 
 Reflect.defineProperty(Reflect, 'was', { value: (_item, ... _args) => {
-	for(var i = _args.length - 1; i >= 0; --i)
-		if(typeof _args[i] !== 'string' || _args[i].length === 0)
-			_args.splice(i, 1);
+	var boundHide = DEFAULT_BOUND_HIDE; for(var i = _args.length - 1; i >= 0; --i) {
+		if(_args[i] === null) boundHide = !boundHide;
+		else if(typeof _args[i] !== 'string' || _args[i].length === 0) _args.splice(i, 1); }
 	if(_args.length > 0) _args = Array.from(new Set(_args)); //my "Array.unique()" interpretation
 	const result = []; const prototypes = Reflect.getPrototypesOf(_item);
-	if(prototypes.length === 0) result[0] = Reflect.is(_item);
+	if(prototypes.length === 0) result[0] = Reflect.is(_item,
+		(boundHide !== DEFAULT_BOUND_HIDE ? null : undefined));
 	else { var name; for(var i = 0, j = 0; i < prototypes.length; ++i)
 		if(typeof (name = Reflect.is(prototypes[i])) === 'string')
 			result[j++] = name; }
@@ -83,8 +86,10 @@ Reflect.defineProperty(Reflect, 'was', { value: (_item, ... _args) => {
 }});
 
 Reflect.defineProperty(Reflect, 'is', { value: (_item, ... _args) => {
-	var className = true; for(var i = 0; i < _args.length; ++i) {
+	var boundHide = DEFAULT_BOUND_HIDE; var className = true;
+	for(var i = 0; i < _args.length; ++i) {
 		if(typeof _args[i] === 'boolean') className = _args.splice(i--, 1)[0];
+		else if(_args[i] === null) { _args.splice(i--, 1); boundHide = !boundHide; }
 		else if(typeof _args[i] !== 'string' || _args[i].length === 0) _args.splice(i--, 1); }
 	if(_args.length > 0) _args = Array.from(new Set(_args)); //my "Array.unique()" interpretation
 	const tryConstructorName = () => {
@@ -98,7 +103,8 @@ Reflect.defineProperty(Reflect, 'is', { value: (_item, ... _args) => {
 	else result = tryConstructorName();
 	if(!result && className) result = tryClassName();
 	if(!result && _args.length > 0) return false;
-	else if(_args.length === 0) return result;
+	if(result.startsWith('bound ')) { if(boundHide || _args.length > 0) result = result.substr(6); }
+	if(_args.length === 0) return result;
 	return _args.includes(result);
 }});
 
