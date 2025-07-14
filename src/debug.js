@@ -129,7 +129,7 @@ DEBUG.has = (_file, _name) => {
 	return false;
 };
 
-DEBUG.add = (_file, _name, _value, _hint, ... _args) => {
+DEBUG.set = (_file, _name, _value, _hint, ... _args) => {
 	if(!(_name = name(_name)))
 	{
 		return;
