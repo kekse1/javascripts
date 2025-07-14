@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://norbert.com.es/
- * v0.2.1
+ * v0.2.2
  */
 
 /*
@@ -23,6 +23,7 @@ const DEFAULT_LOWER_CASE = true;
 const DEFAULT_UPPER_CASE = true;
 const DEFAULT_COUNT_RADIX = 36;
 const DEFAULT_COUNT_PREFIX = 'DEBUG_';
+const DEFAULT_COUNT_LOCAL = false;
 const DEFAULT_EXT = '.js';
 
 //
@@ -40,13 +41,35 @@ const DEBUG = (_func, ... _a) => {
 	return DEBUG[_func](... _a);
 };
 
-export default DEBUG;
-DEBUG.MAP = new Map(); DEBUG.COUNT = 0;
-const count = (_radix = DEFAULT_COUNT_RADIX) => (
-	(string(DEFAULT_COUNT_PREFIX, false) ?
-		DEFAULT_COUNT_PREFIX : '') +
-	(++DEBUG.COUNT).toString(int(DEFAULT_COUNT_RADIX) ?
-		DEFAULT_COUNT_RADIX : 10));
+export default DEBUG; DEBUG.MAP = new Map();
+DEBUG.COUNT_GLOBAL = 0; DEBUG.COUNT_LOCAL = new Map();
+
+const count = (_file = null, _radix = DEFAULT_COUNT_RADIX) => {
+	if(!DEFAULT_COUNT_LOCAL || !(_file = file(_file)))
+	{
+		return name((string(DEFAULT_COUNT_PREFIX, false) ?
+				DEFAULT_COUNT_PREFIX : '') +
+			(++DEBUG.COUNT_GLOBAL).toString(
+				int(DEFAULT_COUNT_RADIX) ?
+					DEFAULT_COUNT_RADIX : 36));
+	}
+
+	if(!DEBUG.COUNT_LOCAL.has(_file))
+	{
+		DEBUG.COUNT_LOCAL.set(_file, 0);
+	}
+	else
+	{
+		DEBUG.COUNT_LOCAL.set(_file,
+			(DEBUG.COUNT_LOCAL.get(_file) + 1));
+	}
+
+	return name((string(DEFAULT_COUNT_PREFIX, false) ?
+			DEFAULT_COUNT_PREFIX : '') +
+		DEBUG.COUNT_LOCAL.get(_file).toString(
+			int(DEFAULT_COUNT_RADIX) ?
+				DEFAULT_COUNT_RADIX : 36));
+};
 
 //
 DEBUG.FUNC = () => {
@@ -167,7 +190,7 @@ DEBUG.set = (_file, _name, _value, _hint, ... _args) => {
 	
 	if(!(_name = name(_name)))
 	{
-		_name = name(count());
+		_name = count(_file);
 	}
 	
 	const item = DEBUG.create(
