@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://norbert.com.es/
- * v0.2.0
+ * v0.2.1
  */
 
 /*
@@ -21,6 +21,8 @@
 const DEFAULT_BASENAME = true;
 const DEFAULT_LOWER_CASE = true;
 const DEFAULT_UPPER_CASE = true;
+const DEFAULT_COUNT_RADIX = 36;
+const DEFAULT_COUNT_PREFIX = 'DEBUG_';
 const DEFAULT_EXT = '.js';
 
 //
@@ -39,7 +41,12 @@ const DEBUG = (_func, ... _a) => {
 };
 
 export default DEBUG;
-DEBUG.MAP = new Map();
+DEBUG.MAP = new Map(); DEBUG.COUNT = 0;
+const count = (_radix = DEFAULT_COUNT_RADIX) => (
+	(string(DEFAULT_COUNT_PREFIX, false) ?
+		DEFAULT_COUNT_PREFIX : '') +
+	(++DEBUG.COUNT).toString(int(DEFAULT_COUNT_RADIX) ?
+		DEFAULT_COUNT_RADIX : 10));
 
 //
 DEBUG.FUNC = () => {
@@ -61,6 +68,10 @@ DEBUG.FUNC = () => {
 	
 	return result;
 };
+
+DEBUG.reset = (_clear = true) => {
+	if(_clear) DEBUG.MAP = new Map();
+	DEBUG.COUNT = 0; };
 
 //
 const file = (_file) => {
@@ -137,11 +148,6 @@ DEBUG.has = (_file, _name) => {
 };
 
 DEBUG.set = (_file, _name, _value, _hint, ... _args) => {
-	if(!(_name = name(_name)))
-	{
-		return;
-	}
-	
 	if(!(_file = file(_file)))
 	{
 		return null;
@@ -157,6 +163,11 @@ DEBUG.set = (_file, _name, _value, _hint, ... _args) => {
 	else
 	{
 		map = DEBUG.MAP.get(_file);
+	}
+	
+	if(!(_name = name(_name)))
+	{
+		_name = name(count());
 	}
 	
 	const item = DEBUG.create(
