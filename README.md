@@ -23,6 +23,7 @@ time(!) I'm usually working with CommonJS modules, using
 <br><br>
 
 ### News
+* \[**2025-07-15**\] New [**`debug.js`**](#debugjs), v**0.2.0**;
 * \[**2025-05-31**\] Updated the [**`reflection`.js**](#reflectionjs), v**3.3.0**;
 * \[**2025-05-24**\] Update in my deep-[**`clone`.js**](#clonejs), v**0.7.0**;
 * \[**2025-05-23**\] Updated the [**`mode`.js**](#modejs), v**0.4.2**;
@@ -62,6 +63,7 @@ time(!) I'm usually working with CommonJS modules, using
 	* [`street-split`.js](#street-splitjs)
 	* [`fold.css`.js](#foldcssjs)
 	* [`levenshtein`.js](#levenshteinjs)
+	* [`debug`.js](#debugjs)
 3. [Contact](#contact)
 4. [Copyright and License](#copyright-and-license)
 
@@ -434,6 +436,26 @@ but the code is/was a mess!
 This one has it's [own repository](https://github.com/kekse1/levenshtein.js/).
 
 <br><br>
+
+### `debug.js`
+
+<a href="src/debug.js">
+<img id="debugjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60debug.js%60" />
+</a>
+
+This code is an example on how you could handle/manage DEBUG switches.
+
+* [Version v**0.2.0**](src/debug.js) (created **2025-07-15**)
+
+I've many files with many switches. But instead of distributing
+all of them in all files, I needed a global place (and some
+management functions, too); so it'd be easier to run my apps
+with different test/debug/.. cases!
+
+So this little JavaScript code was born. .. maybe it could be
+a helping hand for you, too!? ^_^ ...
+
+<br><br><br>
 
 # Contact
 <img src="https://kekse.biz/github.php?override=github:javascripts&draw&text=javascripts@kekse.biz&angle=6&size=38pt&fg=150,20,90&font=OpenSans&ro&readonly&h=64&v=16" />
