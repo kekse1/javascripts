@@ -21,6 +21,7 @@
 const DEFAULT_BASENAME = true;
 const DEFAULT_LOWER_CASE = true;
 const DEFAULT_UPPER_CASE = true;
+const DEFAULT_EXT = '.js';
 
 //
 const DEBUG = (_func, ... _a) => {
@@ -76,6 +77,12 @@ const file = (_file) => {
 	if(DEFAULT_BASENAME)
 	{
 		return path.basename(_file);
+	}
+
+	if(DEFAULT_EXT && !path.extname(_file))
+	{
+		_file += (DEFAULT_EXT[0] === '.' ?
+			'' : '.') + DEFAULT_EXT;
 	}
 	
 	return path.resolve(_file);
