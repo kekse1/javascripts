@@ -21,7 +21,7 @@
 const DEFAULT_BASENAME = true;
 const DEFAULT_LOWER_CASE = true;
 const DEFAULT_UPPER_CASE = true;
-const DEFAULT_COUNT_RADIX = 36;
+const DEFAULT_RADIX = 36;
 const DEFAULT_COUNT_PREFIX = 'DEBUG_';
 const DEFAULT_COUNT_LOCAL = true;
 const DEFAULT_EXT = '.js';
@@ -50,7 +50,7 @@ const count = (_file = null) => {
 		return name((string(DEFAULT_COUNT_PREFIX, false) ?
 				DEFAULT_COUNT_PREFIX : '') +
 			(++DEBUG.COUNT_GLOBAL).toString(
-				DEFAULT_COUNT_RADIX));
+				DEFAULT_RADIX));
 	}
 
 	if(!DEBUG.COUNT_LOCAL.has(_file))
@@ -66,7 +66,7 @@ const count = (_file = null) => {
 	return name((string(DEFAULT_COUNT_PREFIX, false) ?
 			DEFAULT_COUNT_PREFIX : '') +
 		DEBUG.COUNT_LOCAL.get(_file).toString(
-			DEFAULT_COUNT_RADIX));
+			DEFAULT_RADIX));
 };
 
 //
@@ -121,7 +121,12 @@ const file = (_file) => {
 };
 
 const name = (_name) => {
-	if(!string(_name, false))
+	if(int(_name))
+	{
+		return _name.toString(
+			DEFAULT_RADIX);
+	}
+	else if(!string(_name, false))
 	{
 		return null;
 	}
@@ -351,7 +356,7 @@ DEBUG.search = (_local = null, ... _count) => {
 		{
 			_count[i] = name(
 				_count[i].toString(
-					DEFAULT_COUNT_RADIX));
+					DEFAULT_RADIX));
 		}
 		else if(string(_count[i]))
 		{
