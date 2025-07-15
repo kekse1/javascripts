@@ -125,7 +125,7 @@ const file = (_file) => {
 const name = (_name) => {
 	if(int(_name))
 	{
-		return _name.toString(
+		_name = _name.toString(
 			DEFAULT_RADIX);
 	}
 	else if(!string(_name, false))
@@ -135,7 +135,7 @@ const name = (_name) => {
 
 	if(DEFAULT_UPPER_CASE)
 	{
-		return _name.toUpperCase();
+		_name = _name.toUpperCase();
 	}
 
 	return _name;
@@ -193,9 +193,9 @@ DEBUG.set = (_file, _name, _value, _hint, ... _args) => {
 		map = DEBUG.MAP.get(_file);
 	}
 	
-	const item = DEBUG.create(
-		_file, _name, _value, _hint,
-			... _args);
+	const item = DEBUG.create(_file,
+		_name = name(_name),
+		_value, _hint, ... _args);
 
 	if(!(item.name = name(item.name)))
 	{
@@ -239,7 +239,7 @@ DEBUG.get = (_file, _name, _raw = true, _throw = true) => {
 	{
 		return undefined;
 	}
-	console.dir({map,_file, _name,_raw});
+
 	if(!(_name = name(_name)))
 	{
 		const keys = [ ... map.keys() ];
@@ -385,7 +385,7 @@ DEBUG.search = (_local = null, ... _count) => {
 			_count[i] = DEFAULT_COUNT_PREFIX + _count[i];
 		}
 	}
-//	console.dir({_count});
+
 	if(_count.length === 0)
 	{
 		_count = null;
