@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://norbert.com.es/
- * v0.2.3
+ * v0.2.4
  */
 
 /*
@@ -25,7 +25,6 @@ const DEFAULT_RADIX = 36;
 const DEFAULT_COUNT_PREFIX = 'DEBUG_';
 const DEFAULT_COUNT_LOCAL = true;
 const DEFAULT_EXT = '.js';
-const DEFAULT_THROW = true;
 
 //
 const DEBUG = (_func, ... _a) => {
@@ -101,6 +100,8 @@ const file = (_file) => {
 	{
 		return null;
 	}
+
+	_file = path.normalize(_file);
 	
 	if(DEFAULT_LOWER_CASE)
 	{
@@ -109,7 +110,7 @@ const file = (_file) => {
 	
 	if(DEFAULT_BASENAME)
 	{
-		return path.basename(_file);
+		_file = path.basename(_file);
 	}
 
 	if(DEFAULT_EXT && !path.extname(_file))
@@ -118,7 +119,7 @@ const file = (_file) => {
 			'' : '.') + DEFAULT_EXT;
 	}
 	
-	return path.resolve(_file);
+	return _file;
 };
 
 const name = (_name) => {
@@ -218,7 +219,7 @@ DEBUG.set = (_file, _name, _value, _hint, ... _args) => {
 	return item;
 };
 
-DEBUG.get = (_file, _name, _raw = true) => {
+DEBUG.get = (_file, _name, _raw = true, _throw = true) => {
 	if(!(_file = file(_file)))
 	{
 		return [ ... DEBUG.MAP.keys() ];
@@ -230,7 +231,7 @@ DEBUG.get = (_file, _name, _raw = true) => {
 	{
 		map = DEBUG.MAP.get(_file);
 	}
-	else if(DEFAULT_THROW)
+	else if(_throw)
 	{
 		throw new Error('File not available');
 	}
@@ -238,7 +239,7 @@ DEBUG.get = (_file, _name, _raw = true) => {
 	{
 		return undefined;
 	}
-	
+	console.dir({map,_file, _name,_raw});
 	if(!(_name = name(_name)))
 	{
 		const keys = [ ... map.keys() ];
@@ -261,7 +262,7 @@ DEBUG.get = (_file, _name, _raw = true) => {
 	
 	if(!map.has(_name))
 	{
-		if(DEFAULT_THROW)
+		if(_throw)
 		{
 			throw new Error('Name not available in file');
 		}
