@@ -23,7 +23,7 @@ time(!) I'm usually working with CommonJS modules, using
 <br><br>
 
 ### News
-* \[**2025-07-15**\] New [**`debug.js`**](#debugjs), v**0.2.4**;
+* \[**2025-07-15**\] New [**`debug.js`**](#debugjs), v**1.0.0**;
 * \[**2025-05-31**\] Updated the [**`reflection`.js**](#reflectionjs), v**3.3.0**;
 * \[**2025-05-24**\] Update in my deep-[**`clone`.js**](#clonejs), v**0.7.0**;
 * \[**2025-05-23**\] Updated the [**`mode`.js**](#modejs), v**0.4.2**;
@@ -443,17 +443,27 @@ This one has it's [own repository](https://github.com/kekse1/levenshtein.js/).
 <img id="debugjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60debug.js%60" />
 </a>
 
-This code is an example on how you could handle/manage DEBUG switches.
+```
+This code is an example on how you could handle or manage
+possible _*DEBUG* switches_! ...
+```
 
-* [Version v**0.2.4**](src/debug.js) (created **2025-07-15**)
+* [Version v**1.0.0**](src/debug.js) (created **2025-07-15**)
 
-I've many files with many switches. But instead of distributing
-all of them in all files, I needed a global place (and some
-management functions, too); so it'd be easier to run my apps
-with different test/debug/.. cases!
+```
+	# `const DEBUG_*` ... // no more.
 
-So this little JavaScript code was born. .. maybe it could be
-a helping hand for you, too!? ^_^ ...
+In the newest version >=1.0.0 my code is really much more
+compact.. nearly not worth mentioning it .. but it helps.
+
+I realized that it's not really great to include the file
+names/paths as first map key; because it was my intention
+to NOT do so: my code had many 'const DEBUG_`, which were
+partially the same over many files.
+
+I wanted to define them once, on a global location. .. so
+this was meant to be! ;-)
+```
 
 <br><br><br>
 
