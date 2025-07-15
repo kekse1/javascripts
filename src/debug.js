@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://norbert.com.es/
- * v0.2.2
+ * v0.2.3
  */
 
 /*
@@ -23,7 +23,7 @@ const DEFAULT_LOWER_CASE = true;
 const DEFAULT_UPPER_CASE = true;
 const DEFAULT_COUNT_RADIX = 36;
 const DEFAULT_COUNT_PREFIX = 'DEBUG_';
-const DEFAULT_COUNT_LOCAL = false;
+const DEFAULT_COUNT_LOCAL = true;
 const DEFAULT_EXT = '.js';
 
 //
@@ -44,14 +44,13 @@ const DEBUG = (_func, ... _a) => {
 export default DEBUG; DEBUG.MAP = new Map();
 DEBUG.COUNT_GLOBAL = 0; DEBUG.COUNT_LOCAL = new Map();
 
-const count = (_file = null, _radix = DEFAULT_COUNT_RADIX) => {
-	if(!DEFAULT_COUNT_LOCAL || !(_file = file(_file)))
+const count = (_file = null) => {
+	if(!(_file = file(_file)))
 	{
 		return name((string(DEFAULT_COUNT_PREFIX, false) ?
 				DEFAULT_COUNT_PREFIX : '') +
 			(++DEBUG.COUNT_GLOBAL).toString(
-				int(DEFAULT_COUNT_RADIX) ?
-					DEFAULT_COUNT_RADIX : 36));
+				DEFAULT_COUNT_RADIX));
 	}
 
 	if(!DEBUG.COUNT_LOCAL.has(_file))
@@ -67,8 +66,7 @@ const count = (_file = null, _radix = DEFAULT_COUNT_RADIX) => {
 	return name((string(DEFAULT_COUNT_PREFIX, false) ?
 			DEFAULT_COUNT_PREFIX : '') +
 		DEBUG.COUNT_LOCAL.get(_file).toString(
-			int(DEFAULT_COUNT_RADIX) ?
-				DEFAULT_COUNT_RADIX : 36));
+			DEFAULT_COUNT_RADIX));
 };
 
 //
@@ -188,14 +186,16 @@ DEBUG.set = (_file, _name, _value, _hint, ... _args) => {
 		map = DEBUG.MAP.get(_file);
 	}
 	
-	if(!(_name = name(_name)))
-	{
-		_name = count(_file);
-	}
-	
 	const item = DEBUG.create(
 		_file, _name, _value, _hint,
 			... _args);
+
+	if(!(item.name = name(item.name)))
+	{
+		item.name = _name = (
+			DEFAULT_COUNT_LOCAL ?
+				item.local : item.global);
+	}
 	
 	if(map.has(_name))
 	{
@@ -212,7 +212,7 @@ DEBUG.set = (_file, _name, _value, _hint, ... _args) => {
 	return item;
 };
 
-DEBUG.get = (_file, _name, _raw = false) => {
+DEBUG.get = (_file, _name, _raw = true) => {
 	if(!(_file = file(_file)))
 	{
 		return [ ... DEBUG.MAP.keys() ];
@@ -270,6 +270,8 @@ DEBUG.create = (_file, _name, _value, _hint, ... _args) => {
 			value: (_value || undefined),
 			hint: (_hint || null),
 			original: undefined,
+			global: count(null),
+			local: count(_file),
 			args: _args };
 };
 
@@ -337,6 +339,87 @@ DEBUG.find = (_name, _raw = false) => {
 	if(_name && _raw)
 	{
 		return object;
+	}
+	
+	return result;
+};
+
+DEBUG.search = (_local = null, ... _count) => {
+	for(var i = 0; i < _count.length; ++i)
+	{
+		if(int(_count[i]))
+		{
+			_count[i] = name(
+				_count[i].toString(
+					DEFAULT_COUNT_RADIX));
+		}
+		else if(string(_count[i]))
+		{
+			_count[i] = name(_count[i]);
+		}
+		else
+		{
+			_count.splice(i--, 1);
+			continue;
+		}
+		
+		if(string(DEFAULT_COUNT_PREFIX, false) &&
+			!_count[i].startsWith(DEFAULT_COUNT_PREFIX))
+		{
+			_count[i] = DEFAULT_COUNT_PREFIX + _count[i];
+		}
+	}
+//	console.dir({_count});
+	if(_count.length === 0)
+	{
+		_count = null;
+	}
+	else
+	{
+		_count = _count.unique();
+	}
+
+	const result = [];
+	const values = [ ... DEBUG.MAP.values() ];
+	var map, sub;
+	
+	for(var i = 0, z = 0; i < values.length; ++i)
+	{
+		sub = [ ... (map = values[i]).values() ];
+		
+		for(var j = 0; j < sub.length; ++j)
+		{
+			if(_count === null)
+			{
+				result[z++] = sub[j];
+			}
+			else if(_local === null)
+			{
+				if(_count.includes(
+						sub[j].global) ||
+					_count.includes(
+						sub[j].local))
+				{
+					result[z++] = sub[j];
+				}
+			}
+			else if(_local)
+			{
+				if(_count.includes(
+					sub[j].local))
+				{
+					result[z++] = sub[j];
+				}
+			}
+			else
+			{
+				if(_count.includes(
+					sub[j].global))
+				{
+					result[z++] = sub[j];
+				}
+			}
+		}
 	}
 	
 	return result;
