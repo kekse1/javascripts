@@ -25,7 +25,6 @@
 
 //
 const DEFAULT_THROW = true;	//recommended.. prevents from errors... sure.
-const DEFAULT_RAW = true;	//on '.get()'.. you would want it.. maybe. ..
 const DEFAULT_KEY_UPPER = true;	//naming styles
 
 //
@@ -78,7 +77,7 @@ DEBUG.set = (_key, _value, ... _param) => {
 	return item;
 };
 
-DEBUG.get = (_key, _raw = DEFAULT_RAW, _throw = DEFAULT_THROW) => {
+DEBUG.get = (_key, _raw = false, _throw = DEFAULT_THROW) => {
 	if(!DEBUG.MAP.has(_key = key(_key)))
 	{
 		if(_throw)
