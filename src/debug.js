@@ -25,6 +25,7 @@ const DEFAULT_RADIX = 36;
 const DEFAULT_COUNT_PREFIX = 'DEBUG_';
 const DEFAULT_COUNT_LOCAL = true;
 const DEFAULT_EXT = '.js';
+const DEFAULT_THROW = true;
 
 //
 const DEBUG = (_func, ... _a) => {
@@ -229,6 +230,10 @@ DEBUG.get = (_file, _name, _raw = true) => {
 	{
 		map = DEBUG.MAP.get(_file);
 	}
+	else if(DEFAULT_THROW)
+	{
+		throw new Error('File not available');
+	}
 	else
 	{
 		return undefined;
@@ -256,6 +261,11 @@ DEBUG.get = (_file, _name, _raw = true) => {
 	
 	if(!map.has(_name))
 	{
+		if(DEFAULT_THROW)
+		{
+			throw new Error('Name not available in file');
+		}
+
 		return undefined;
 	}
 	
