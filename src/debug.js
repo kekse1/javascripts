@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://norbert.com.es/
- * v1.0.0
+ * v1.0.1
  */
 
 /*
@@ -91,7 +91,7 @@ DEBUG.get = (_key, _raw = false, _throw = DEFAULT_THROW) => {
 	}
 	
 	const result = DEBUG.MAP.get(_key);
-	if(_raw) return result.value
+	if(!_raw) return result.value;
 	return result;
 };
 
