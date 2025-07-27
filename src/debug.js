@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://norbert.com.es/
- * v1.0.1
+ * v1.1.0
  */
 
 /*
@@ -28,20 +28,7 @@ const DEFAULT_THROW = true;	//recommended.. prevents from errors... sure.
 const DEFAULT_KEY_UPPER = true;	//naming styles
 
 //
-const DEBUG = () => {
-	const result = Object.keys(DEBUG);
-	
-	for(var i = result.length - 1; i >= 0; --i)
-	{
-		if(typeof result[i] !== 'function')
-		{
-			result.splice(i, 1);
-		}
-	}
-	
-	return result;
-};
-
+const DEBUG = (... _args) => DEBUG.get(... _args);
 DEBUG.MAP = new Map();
 export default DEBUG;
 
