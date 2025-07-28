@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://norbert.com.es/
- * v1.1.0
+ * v1.1.1
  */
 
 /*
@@ -31,6 +31,9 @@ const DEFAULT_KEY_UPPER = true;	//naming styles
 const DEBUG = (... _args) => DEBUG.get(... _args);
 DEBUG.MAP = new Map();
 export default DEBUG;
+
+//
+DEBUG.DEBUG = true; // 'base get() request' if undefined _key param..
 
 //
 const key = (_key) => {
@@ -65,6 +68,11 @@ DEBUG.set = (_key, _value, ... _param) => {
 };
 
 DEBUG.get = (_key, _raw = false, _throw = DEFAULT_THROW) => {
+	if(typeof _key === 'undefined')
+	{
+		return !!DEBUG.DEBUG;
+	}
+
 	if(!DEBUG.MAP.has(_key = key(_key)))
 	{
 		if(_throw)
