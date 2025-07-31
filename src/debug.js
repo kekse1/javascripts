@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://norbert.com.es/
- * v1.1.1
+ * v1.1.2
  */
 
 /*
@@ -25,7 +25,6 @@
 
 //
 const DEFAULT_THROW = true;	//recommended.. prevents from errors... sure.
-const DEFAULT_KEY_UPPER = true;	//naming styles
 
 //
 const DEBUG = (... _args) => DEBUG.get(... _args);
@@ -33,14 +32,10 @@ DEBUG.MAP = new Map();
 export default DEBUG;
 
 //
-DEBUG.DEBUG = true; // 'base get() request' if undefined _key param..
+DEBUG.DEBUG = true; // 'base get() request' if undefined _key param.
 
 //
-const key = (_key) => {
-	if(typeof _key !== 'string') return _key;
-	if(DEFAULT_KEY_UPPER) _key = _key.toUpperCase();
-	return _key; };
-
+const key = (_key) => _key;
 const create = (_index, _key, _value, ... _param) => {
 	return {
 		key: key(_key),
@@ -59,6 +54,8 @@ DEBUG.clear = () => {
 };
 
 DEBUG.set = (_key, _value, ... _param) => {
+	if(DEBUG_THROW && typeof _value === 'undefined')
+		throw new Error('We have to be sure about the debug value. ..');
 	const orig = (DEBUG.MAP.has(_key = key(_key)) ?
 		DEBUG.MAP.get(_key) : null);
 	const index = (orig ? orig.index : DEBUG.MAP.size);
