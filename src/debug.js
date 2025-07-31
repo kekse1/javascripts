@@ -54,7 +54,7 @@ DEBUG.clear = () => {
 };
 
 DEBUG.set = (_key, _value, ... _param) => {
-	if(DEBUG_THROW && typeof _value === 'undefined')
+	if(DEFAULT_THROW && typeof _value === 'undefined')
 		throw new Error('We have to be sure about the debug value. ..');
 	const orig = (DEBUG.MAP.has(_key = key(_key)) ?
 		DEBUG.MAP.get(_key) : null);
