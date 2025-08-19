@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://norbert.com.es/
- * v1.1.4
+ * v1.2.0
  */
 
 /*
@@ -33,19 +33,18 @@ DEBUG.DEBUG = true; // 'base get() request' if undefined _key param.
 
 //
 const key = (_key) => _key;
-const create = (_index, _key, _value, ... _param) => {
+const create = (_key, _value, ... _param) => {
 	const result = {
 		key: key(_key),
 		value: _value,
-		index: _index,
-		alias: null,
 		desc: null,
-		hint: null
+		hint: null,
+		id: null
 	};
 
 	for(const p of _param)
 	{
-		if(string(p, true))
+		if(typeof p === 'string')
 		{
 			if(result.desc === null)
 			{
@@ -56,9 +55,9 @@ const create = (_index, _key, _value, ... _param) => {
 				result.hint = p;
 			}
 		}
-		else if(int(p))
+		else if(typeof p === 'number')
 		{
-			result.alias = p;
+			result.id = p;
 		}
 		else try
 		{
@@ -69,6 +68,15 @@ const create = (_index, _key, _value, ... _param) => {
 			continue;
 		}
 	}
+	
+	if(result.id !== null) DEBUG.MAP.forEach((_value, _key) => {
+		if(_value.id === result.id)
+		{
+			throw new Error('The ID ' + (typeof _value.id === 'string' ?
+				('`' + _value.id + '`') : _value.id.toString()) +
+				' already exists.');
+		}
+	});
 
 	return result; };
 
@@ -85,8 +93,7 @@ DEBUG.clear = () => {
 DEBUG.set = (_key, _value, ... _param) => {
 	const orig = (DEBUG.MAP.has(_key = key(_key)) ?
 		DEBUG.MAP.get(_key) : null);
-	const index = (orig ? orig.index : DEBUG.MAP.size);
-	const item = create(index, _key, _value, _param);
+	const item = create(_key, _value, ... _param);
 	DEBUG.MAP.set(item.key, item);
 	return item;
 };
