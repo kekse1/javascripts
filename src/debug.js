@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://norbert.com.es/
- * v1.1.3
+ * v1.1.4
  */
 
 /*
@@ -37,10 +37,29 @@ const create = (_index, _key, _value, ... _param) => {
 	const result = {
 		key: key(_key),
 		value: _value,
-		index: _index };
+		index: _index,
+		alias: null,
+		desc: null };
 
 	for(const p of _param)
-		Object.assign(result, p);
+	{
+		if(string(p, true))
+		{
+			result.desc = p;
+		}
+		else if(int(p))
+		{
+			result.alias = p;
+		}
+		else try
+		{
+			Object.assign(result, p);
+		}
+		catch(_err)
+		{
+			continue;
+		}
+	}
 
 	return result; };
 
