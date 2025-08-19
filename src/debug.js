@@ -83,6 +83,8 @@ DEBUG.get = (_key, _raw = false) => {
 	return result;
 };
 
+DEBUG.raw = (_key) => DEBUG.get(_key, true);
+
 DEBUG.remove = (_key) => {
 	if(!DEBUG.MAP.has(_key = key(_key)))
 	{
