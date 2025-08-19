@@ -39,13 +39,22 @@ const create = (_index, _key, _value, ... _param) => {
 		value: _value,
 		index: _index,
 		alias: null,
-		desc: null };
+		desc: null,
+		hint: null
+	};
 
 	for(const p of _param)
 	{
 		if(string(p, true))
 		{
-			result.desc = p;
+			if(result.desc === null)
+			{
+				result.desc = p;
+			}
+			else if(result.hint === null)
+			{
+				result.hint = p;
+			}
 		}
 		else if(int(p))
 		{
