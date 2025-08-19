@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://norbert.com.es/
- * v1.1.2
+ * v1.1.3
  */
 
 /*
@@ -24,9 +24,6 @@
  */
 
 //
-const DEFAULT_THROW = true;	//recommended.. prevents from errors... sure.
-
-//
 const DEBUG = (... _args) => DEBUG.get(... _args);
 DEBUG.MAP = new Map();
 export default DEBUG;
@@ -37,11 +34,15 @@ DEBUG.DEBUG = true; // 'base get() request' if undefined _key param.
 //
 const key = (_key) => _key;
 const create = (_index, _key, _value, ... _param) => {
-	return {
+	const result = {
 		key: key(_key),
 		value: _value,
-		param: _param,
-		index: _index }; };
+		index: _index };
+
+	for(const p of _param)
+		Object.assign(result, p);
+
+	return result; };
 
 //
 DEBUG.has = (_key) => (DEBUG.MAP.has(key(_key)));
@@ -54,8 +55,6 @@ DEBUG.clear = () => {
 };
 
 DEBUG.set = (_key, _value, ... _param) => {
-	if(DEFAULT_THROW && typeof _value === 'undefined')
-		throw new Error('We have to be sure about the debug value. ..');
 	const orig = (DEBUG.MAP.has(_key = key(_key)) ?
 		DEBUG.MAP.get(_key) : null);
 	const index = (orig ? orig.index : DEBUG.MAP.size);
@@ -64,7 +63,7 @@ DEBUG.set = (_key, _value, ... _param) => {
 	return item;
 };
 
-DEBUG.get = (_key, _raw = false, _throw = DEFAULT_THROW) => {
+DEBUG.get = (_key, _raw = false) => {
 	if(typeof _key === 'undefined')
 	{
 		return !!DEBUG.DEBUG;
@@ -72,12 +71,9 @@ DEBUG.get = (_key, _raw = false, _throw = DEFAULT_THROW) => {
 
 	if(!DEBUG.MAP.has(_key = key(_key)))
 	{
-		if(_throw)
-		{
-			throw new Error('There\'s no such item' +
-				(typeof _key === 'string' ?
-					' `' + _key + '`' : ''));
-		}
+		if(DEBUG.DEBUG) throw new Error('There\'s no such item' +
+			(typeof _key === 'string' ?
+				' `' + _key + '`' : ''));
 		
 		return undefined;
 	}
@@ -87,9 +83,12 @@ DEBUG.get = (_key, _raw = false, _throw = DEFAULT_THROW) => {
 	return result;
 };
 
-DEBUG.remove = (_key, _throw = DEFAULT_THROW) => {
+DEBUG.remove = (_key) => {
 	if(!DEBUG.MAP.has(_key = key(_key)))
 	{
+		if(DEBUG.DEBUG) throw new Error('There\'s no such item' +
+			(typeof _key === 'string' ?
+				' `' + _key + '`' : ''));
 		return undefined;
 	}
 	
@@ -99,3 +98,4 @@ DEBUG.remove = (_key, _throw = DEFAULT_THROW) => {
 };
 
 //
+
