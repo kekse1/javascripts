@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://norbert.com.es/
- * v1.2.0
+ * v1.2.1
  */
 
 /*
@@ -119,6 +119,34 @@ DEBUG.get = (_key, _raw = false) => {
 };
 
 DEBUG.raw = (_key) => DEBUG.get(_key, true);
+DEBUG.id = (_key) => DEBUG.get(_key, true).id;
+
+DEBUG.list = (_raw = null) => {
+	const result = new Array(DEBUG.count());
+	const keys = DEBUG.keys();
+	var item;
+
+	if(_raw) for(var i = 0; i < keys.length; ++i)
+	{
+		result[i] = { ... DEBUG.get(keys[i], true) };
+	}
+	else if(_raw === null) for(var i = 0; i < keys.length; ++i)
+	{
+		item = DEBUG.MAP.get(keys[i]);
+		result[i] = [ item.id, item.key, item.value ];
+	}
+	else for(var i = 0; i < keys.length; ++i)
+	{
+		item = DEBUG.MAP.get(keys[i]);
+		result[i] = { id: item.id, key: item.key, value: item.value };
+	}
+
+	return result;
+};
+
+DEBUG.trueList = () => DEBUG.list(true);
+DEBUG.falseList = () => DEBUG.list(false);
+DEBUG.nullList = () => DEBUG.list(null);
 
 DEBUG.remove = (_key) => {
 	if(!DEBUG.MAP.has(_key = key(_key)))
