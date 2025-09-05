@@ -23,7 +23,7 @@ time(!) I'm usually working with CommonJS modules, using
 <br><br>
 
 ### News
-* \[**2025-09-05**\] New [**`transposition.js`**](#transpositionjs), v**0.1.**;
+* \[**2025-09-05**\] New [**`transposition.js`**](#transpositionjs), v**0.1.0**;
 * \[**2025-08-29**\] Updated [**`debug.js`**](#debugjs), v**1.2.1**;
 * \[**2025-05-31**\] Updated the [**`reflection`.js**](#reflectionjs), v**3.3.0**;
 * \[**2025-05-24**\] Update in my deep-[**`clone`.js**](#clonejs), v**0.7.0**;
