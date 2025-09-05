@@ -29,3 +29,7 @@ function transposition(_array, _width, _height)
 	return result;
 }
 
+export default transposition;
+
+//
+

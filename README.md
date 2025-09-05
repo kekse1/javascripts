@@ -22,11 +22,8 @@ time(!) I'm usually working with CommonJS modules, using
 
 <br><br>
 
-**TODO**: [`transposition.js`](src/transposition.js) hier einordnen!1
-
-<br><br>
-
 ### News
+* \[**2025-09-05**\] New [**`transposition.js`**](#transpositionjs), v**0.1.**;
 * \[**2025-08-29**\] Updated [**`debug.js`**](#debugjs), v**1.2.1**;
 * \[**2025-05-31**\] Updated the [**`reflection`.js**](#reflectionjs), v**3.3.0**;
 * \[**2025-05-24**\] Update in my deep-[**`clone`.js**](#clonejs), v**0.7.0**;
@@ -68,6 +65,7 @@ time(!) I'm usually working with CommonJS modules, using
 	* [`fold.css`.js](#foldcssjs)
 	* [`levenshtein`.js](#levenshteinjs)
 	* [`debug`.js](#debugjs)
+	* [`transposition`.js](#transpositionjs)
 3. [Contact](#contact)
 4. [Copyright and License](#copyright-and-license)
 
@@ -468,6 +466,21 @@ partially the same over many files.
 I wanted to define them once, on a global location. .. so
 this was meant to be! ;-)
 ```
+
+<br><br>
+
+### `transposition.js`
+
+<a href="src/transposition.js">
+<img id="transpositionjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60transposition.js%60" />
+</a>
+
+Only one function. ... creates the transposition of a 2D-/3D-Matrix (as Array!).
+
+* [Version v**0.1.0**](src/transposition.js) (created **2025-09-04**)
+
+Actually it's 2D, but to be complete I also integrated a depth (so the 3D axis),
+which will *not* change.
 
 <br><br><br>
 
