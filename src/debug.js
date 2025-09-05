@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://norbert.com.es/
- * v1.2.1
+ * v1.2.2
  */
 
 /*
@@ -25,21 +25,68 @@
 
 //
 const DEBUG = (... _args) => DEBUG.get(... _args);
-DEBUG.MAP = new Map();
+DEBUG.MAP = new Map(); DEBUG.ID = new Map();
 export default DEBUG;
 
 //
 DEBUG.DEBUG = true; // 'base get() request' if undefined _key param.
 
 //
-const key = (_key) => _key;
+const checkID = (_id, _check = false) => {
+	if(typeof _id !== 'number' || _id < 0 || (_id % 1) !== 0)
+	{
+		throw new Error('ID needs to be a positive integer');
+	}
+	
+	if(_check && DEBUG.ID.has(_id))
+	{
+		throw new Error('ID already exists');
+	}
+
+	return _id;
+};
+
+const checkKey = (_key, _check = false) => {
+	if(typeof _key === 'number')
+	{
+		if(!DEBUG.ID.has(checkID(_key, false)))
+		{
+			throw new Error('No such ID available');
+		}
+		
+		return DEBUG.ID.get(_key).key;
+	}
+
+	if(typeof _key !== 'string' || _key.length === 0)
+	{
+		throw new Error('Key needs to be a non-empty String');
+	}
+
+	if(_check && !DEBUG.MAP.has(_key))
+	{
+		throw new Error('This ID is unknown');
+	}
+
+	return _key;
+};
+
 const create = (_key, _value, ... _param) => {
+	if(typeof _key !== 'string' || _key.length === 0)
+	{
+		throw new Error('Key needs to be a non-empty String');
+	}
+	
+	if(DEBUG.MAP.has(_key))
+	{
+		throw new Error('Your key already exists');
+	}
+
 	const result = {
-		key: key(_key),
+		key: _key,
+		id: null,
 		value: _value,
 		desc: null,
-		hint: null,
-		id: null
+		hint: null
 	};
 
 	for(const p of _param)
@@ -57,7 +104,11 @@ const create = (_key, _value, ... _param) => {
 		}
 		else if(typeof p === 'number')
 		{
-			result.id = p;
+			result.id = checkID(p, true);
+		}
+		else if(p === null)
+		{
+			result.id = null;
 		}
 		else try
 		{
@@ -68,21 +119,19 @@ const create = (_key, _value, ... _param) => {
 			continue;
 		}
 	}
-	
-	if(result.id !== null) DEBUG.MAP.forEach((_value, _key) => {
-		if(_value.id === result.id)
-		{
-			throw new Error('The ID ' + (typeof _value.id === 'string' ?
-				('`' + _value.id + '`') : _value.id.toString()) +
-				' already exists.');
-		}
-	});
 
-	return result; };
+	if(result.id !== null)
+	{
+		DEBUG.ID.set(result.id, result);
+	}
+
+	DEBUG.MAP.set(result.key, result);
+	return result;
+};
 
 //
-DEBUG.has = (_key) => (DEBUG.MAP.has(key(_key)));
-DEBUG.count = () => (DEBUG.MAP.size);
+DEBUG.has = (_key) => DEBUG.MAP.has(checkKey(_key, false));
+DEBUG.count = () => DEBUG.MAP.size;
 DEBUG.keys = () => [ ... DEBUG.MAP.keys() ];
 
 DEBUG.clear = () => {
@@ -90,13 +139,7 @@ DEBUG.clear = () => {
 	DEBUG.MAP.clear(); return result;
 };
 
-DEBUG.set = (_key, _value, ... _param) => {
-	const orig = (DEBUG.MAP.has(_key = key(_key)) ?
-		DEBUG.MAP.get(_key) : null);
-	const item = create(_key, _value, ... _param);
-	DEBUG.MAP.set(item.key, item);
-	return item;
-};
+DEBUG.set = (_key, _value, ... _param) => create(_key, _value, ... _param);
 
 DEBUG.get = (_key, _raw = false) => {
 	if(typeof _key === 'undefined')
@@ -104,12 +147,11 @@ DEBUG.get = (_key, _raw = false) => {
 		return !!DEBUG.DEBUG;
 	}
 
-	if(!DEBUG.MAP.has(_key = key(_key)))
+	if(!DEBUG.MAP.has(_key = checkKey(_key, false)))
 	{
 		if(DEBUG.DEBUG) throw new Error('There\'s no such item' +
 			(typeof _key === 'string' ?
 				' `' + _key + '`' : ''));
-		
 		return undefined;
 	}
 	
@@ -149,16 +191,9 @@ DEBUG.falseList = () => DEBUG.list(false);
 DEBUG.nullList = () => DEBUG.list(null);
 
 DEBUG.remove = (_key) => {
-	if(!DEBUG.MAP.has(_key = key(_key)))
-	{
-		if(DEBUG.DEBUG) throw new Error('There\'s no such item' +
-			(typeof _key === 'string' ?
-				' `' + _key + '`' : ''));
-		return undefined;
-	}
-	
-	const result = DEBUG.MAP.get(_key);
+	const result = DEBUG.MAP.get(_key = checkKey(_key, true));
 	DEBUG.MAP.delete(_key);
+	if(result.id !== null) DEBUG.ID.delete(result.id);
 	return result;
 };
 
