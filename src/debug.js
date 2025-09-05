@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://norbert.com.es/
- * v1.2.2
+ * v1.2.3
  */
 
 /*
@@ -130,16 +130,31 @@ const create = (_key, _value, ... _param) => {
 };
 
 //
-DEBUG.has = (_key) => DEBUG.MAP.has(checkKey(_key, false));
+DEBUG.has = (_key) => {
+	if(typeof _key === 'number')
+	{
+		return DEBUG.ID.has(_key);
+	}
+
+	if(typeof _key === 'string')
+	{
+		return DEBUG.MAP.has(_key);
+	}
+
+	return null;
+};
+
 DEBUG.count = () => DEBUG.MAP.size;
 DEBUG.keys = () => [ ... DEBUG.MAP.keys() ];
 
 DEBUG.clear = () => {
-	const result = [ ... DEBUG.MAP.entries() ];
-	DEBUG.MAP.clear(); return result;
+	const result = [ ... DEBUG.MAP.values() ];
+	DEBUG.MAP.clear(); DEBUG.ID.clear();
+	return result;
 };
 
-DEBUG.set = (_key, _value, ... _param) => create(_key, _value, ... _param);
+DEBUG.set = (_key, _value, ... _param) => create(
+	_key, _value, ... _param);
 
 DEBUG.get = (_key, _raw = false) => {
 	if(typeof _key === 'undefined')
