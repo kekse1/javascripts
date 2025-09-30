@@ -23,8 +23,8 @@ time(!) I'm usually working with CommonJS modules, using
 <br><br>
 
 ### News
+* \[**2025-09-30**\] Update in [**`debug.js`**](#debugjs), v**1.3.0**;
 * \[**2025-09-05**\] New [**`transposition.js`**](#transpositionjs), v**0.1.0**;
-* \[**2025-09-05**\] Update in [**`debug.js`**](#debugjs), v**1.2.3**;
 * \[**2025-05-31**\] Updated the [**`reflection`.js**](#reflectionjs), v**3.3.0**;
 * \[**2025-05-24**\] Update in my deep-[**`clone`.js**](#clonejs), v**0.7.0**;
 * \[**2025-05-23**\] Updated the [**`mode`.js**](#modejs), v**0.4.2**;
@@ -450,7 +450,7 @@ This code is an example on how you could handle or manage
 possible _*DEBUG* switches_! ...
 ```
 
-* [Version v**1.2.3**](src/debug.js) (updated **2025-09-05**)
+* [Version v**1.3.0**](src/debug.js) (updated **2025-09-30**)
 
 ```
 	# `const DEBUG_*` ... // no more.

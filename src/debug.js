@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://norbert.com.es/
- * v1.2.3
+ * v1.3.0
  */
 
 /*
@@ -82,25 +82,17 @@ const create = (_key, _value, ... _param) => {
 	}
 
 	const result = {
-		key: _key,
 		id: null,
+		key: _key,
 		value: _value,
-		desc: null,
-		hint: null
+		desc: ''
 	};
 
 	for(const p of _param)
 	{
 		if(typeof p === 'string')
 		{
-			if(result.desc === null)
-			{
-				result.desc = p;
-			}
-			else if(result.hint === null)
-			{
-				result.hint = p;
-			}
+			result.desc = p;
 		}
 		else if(typeof p === 'number')
 		{
@@ -146,6 +138,7 @@ DEBUG.has = (_key) => {
 
 DEBUG.count = () => DEBUG.MAP.size;
 DEBUG.keys = () => [ ... DEBUG.MAP.keys() ];
+DEBUG.values = () => [ ... DEBUG.MAP.values() ];
 
 DEBUG.clear = () => {
 	const result = [ ... DEBUG.MAP.values() ];
@@ -178,32 +171,23 @@ DEBUG.get = (_key, _raw = false) => {
 DEBUG.raw = (_key) => DEBUG.get(_key, true);
 DEBUG.id = (_key) => DEBUG.get(_key, true).id;
 
-DEBUG.list = (_raw = null) => {
+DEBUG.list = (_raw = false) => {
 	const result = new Array(DEBUG.count());
-	const keys = DEBUG.keys();
-	var item;
+	var index = 0;
 
-	if(_raw) for(var i = 0; i < keys.length; ++i)
-	{
-		result[i] = { ... DEBUG.get(keys[i], true) };
-	}
-	else if(_raw === null) for(var i = 0; i < keys.length; ++i)
-	{
-		item = DEBUG.MAP.get(keys[i]);
-		result[i] = [ item.id, item.key, item.value ];
-	}
-	else for(var i = 0; i < keys.length; ++i)
-	{
-		item = DEBUG.MAP.get(keys[i]);
-		result[i] = { id: item.id, key: item.key, value: item.value };
-	}
+	DEBUG.MAP.forEach((_value) => {
+		if(_raw) result[index++] = { ... _value };
+		else result[index++] = [
+			_value.id,
+			_value.key,
+			_value.value,
+			_value.desc ];
+	});
 
 	return result;
 };
 
-DEBUG.trueList = () => DEBUG.list(true);
-DEBUG.falseList = () => DEBUG.list(false);
-DEBUG.nullList = () => DEBUG.list(null);
+DEBUG.rawList = () => DEBUG.list(true);
 
 DEBUG.remove = (_key) => {
 	const result = DEBUG.MAP.get(_key = checkKey(_key, true));
