@@ -478,7 +478,7 @@ this was meant to be! ;-)
 The logical extension to my [**`debug.js`**](#debugjs), here above.
 
 <a href="src/debug-links.js">
-<img id="debuglinksjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%debug-links.js%60" />
+<img id="debuglinksjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60debug-links.js%60" />
 </a>
 
 When I argue with the mask `21`, the symbolic links this script *could*
