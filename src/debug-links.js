@@ -3,7 +3,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://github.com/kekse1/javascripts/
- * v0.2.0
+ * v0.3.0
  */
 
 /*
@@ -12,8 +12,8 @@
  * constellations, when I've got a number of debug variables that can be set
  * to small integer values or smth.
  *
- * When I argue with the mask `21`, the symbolic links this script *could*
- * generate (or just output them on screen) are [ 00, 01, 10, 11, 20, 21 ];
+ * When I argue with the mask `2,1`, the symbolic links this script *could*
+ * generate (or just output them on screen) are [ 0,0; 0,1; 1,0; 1,1; 2,0; 2,1 ];
  *
  */
 
@@ -69,31 +69,33 @@ const checkMask = (_mask, _throw = true) => {
 		return null;
 	}
 
-	if(isNaN(_mask))
-	{
-		if(_throw)
-		{
-			return syntax(3);
-		}
-
-		return null;
-	}
-
-	_mask = _mask.split('');
+	_mask = _mask.split(',');
 
 	for(var i = 0; i < _mask.length; ++i)
 	{
-		if(_mask[i] === '0')
+		_mask[i] = Number(_mask[i]);
+		
+		if(Number.isNaN(_mask[i]))
+		{
+			if(_throw)
+			{
+				return syntax(3);
+			}
+			
+			return null;
+		}
+		
+		if(_mask[i] === 0)
 		{
 			if(_throw)
 			{
 				return syntax(4);
 			}
-
+			
 			return null;
 		}
-
-		_mask[i] = (Number(_mask[i]) + 1);
+		
+		++_mask[i];
 	}
 
 	return _mask;
@@ -128,7 +130,8 @@ const proceed = () => {
 
 		for(var j = mask.length - 1; j >= 0; --j)
 		{
-			sub = Math.floor(rest % mask[j]) + sub;
+			sub = Math.floor(rest % mask[j]) +
+				(sub ? ',' : '') + sub;
 			rest /= mask[j];
 		}
 
@@ -141,7 +144,7 @@ const proceed = () => {
 		return process.exit(5);
 	}
 
-	return finish(result.sort(true));
+	return finish(result);//.sort(true);//!?
 };
 
 const finish = (_list) => {
