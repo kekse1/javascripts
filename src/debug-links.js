@@ -25,7 +25,7 @@ import fs from 'node:fs';
 //
 const syntax = (_exit = 255) => {
 	console.warn('Debugging my `Norbert`.');
-	console.info(EOL + '\tSyntax: $0 < mask > [ < symblink target > < extension > ]');
+	console.info(EOL + '\tSyntax: $0 < mask > [ < symlink target > [ < extension > ] ]');
 	console.debug(EOL + 'If only mask is given, you\'ll only see the valid constellations (on screen).');
 	console.debug('Otherwise notice that symlinks will be created in/from current working directory.');
 	if(byte(_exit)) process.exit(_exit);
@@ -50,10 +50,9 @@ else
 
 	if(!string(extension, false))
 	{
-		syntax(2);
+		extension = '';
 	}
-
-	if(extension[0] !== '.')
+	else if(extension[0] !== '.')
 	{
 		extension = '.' + extension;
 	}
@@ -64,7 +63,7 @@ const checkMask = (_mask, _throw = true) => {
 	{
 		if(_throw)
 		{
-			return syntax(3);
+			return syntax(2);
 		}
 
 		return null;
@@ -74,7 +73,7 @@ const checkMask = (_mask, _throw = true) => {
 	{
 		if(_throw)
 		{
-			return syntax(4);
+			return syntax(3);
 		}
 
 		return null;
@@ -88,7 +87,7 @@ const checkMask = (_mask, _throw = true) => {
 		{
 			if(_throw)
 			{
-				return syntax(5);
+				return syntax(4);
 			}
 
 			return null;
@@ -138,7 +137,7 @@ const proceed = () => {
 	if(result.length === 0)
 	{
 		console.error('Unexpected...');
-		return process.exit(6);
+		return process.exit(5);
 	}
 
 	return finish(result.sort(true));
