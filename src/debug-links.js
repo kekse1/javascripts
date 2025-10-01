@@ -24,10 +24,10 @@ import fs from 'node:fs';
 
 //
 const syntax = (_exit = 255) => {
-	console.log('Debugging my `Norbert`.');
-	console.log(EOL + '\tSyntax: $0 < mask > [ < symblink target > < extension > ]');
-	console.log(EOL + 'If only mask is given, you\'ll only see the valid constellations (on screen).');
-	console.log('Otherwise notice that symlinks will be created in/from current working directory.');
+	console.warn('Debugging my `Norbert`.');
+	console.info(EOL + '\tSyntax: $0 < mask > [ < symblink target > < extension > ]');
+	console.debug(EOL + 'If only mask is given, you\'ll only see the valid constellations (on screen).');
+	console.debug('Otherwise notice that symlinks will be created in/from current working directory.');
 	if(byte(_exit)) process.exit(_exit);
 };
 
