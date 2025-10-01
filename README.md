@@ -23,6 +23,7 @@ time(!) I'm usually working with CommonJS modules, using
 <br><br>
 
 ### News
+* \[**2025-10-01**\] New script [**`debug-links.js`**](#debuglinksjs), v**0.1.0**;
 * \[**2025-09-30**\] Update in [**`debug.js`**](#debugjs), v**1.3.0**;
 * \[**2025-09-05**\] New [**`transposition.js`**](#transpositionjs), v**0.1.0**;
 * \[**2025-05-31**\] Updated the [**`reflection`.js**](#reflectionjs), v**3.3.0**;
@@ -65,6 +66,7 @@ time(!) I'm usually working with CommonJS modules, using
 	* [`fold.css`.js](#foldcssjs)
 	* [`levenshtein`.js](#levenshteinjs)
 	* [`debug`.js](#debugjs)
+	* [`debug-links`.js](#debuglinksjs)
 	* [`transposition`.js](#transpositionjs)
 3. [Contact](#contact)
 4. [Copyright and License](#copyright-and-license)
@@ -450,6 +452,8 @@ This code is an example on how you could handle or manage
 possible _*DEBUG* switches_! ...
 ```
 
+See also my script [**`debug-links.js`**](#debuglinksjs) (below).
+
 * [Version v**1.3.0**](src/debug.js) (updated **2025-09-30**)
 
 ```
@@ -468,6 +472,18 @@ this was meant to be! ;-)
 ```
 
 <br><br>
+
+### `debug-links.js`
+
+The logical extension to my [**`debug.js`**](#debugjs), here above.
+
+<a href="src/debug-links.js">
+<img id="debuglinksjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%debug-links.js%60" />
+</a>
+
+```When I argue with the mask `21`, the symbolic links this script *could*
+generate (or just output them on screen) are [ 00, 01, 10, 11, 20, 21 ];
+```
 
 ### `transposition.js`
 
