@@ -3,7 +3,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://github.com/kekse1/javascripts/
- * v0.1.0
+ * v0.1.1
  */
 
 /*
@@ -119,20 +119,20 @@ const countLinks = (_mask) => {
 const count = countLinks(mask);
 
 const proceed = () => {
-	var base, combination, digit;
+	var sub, base, digit;
 	const result = [];
 	
-	for(var i = 0; i < count; ++i)
+	for(var i = 0, k = 0; i < count; ++i)
 	{
-		combination = '';
+		sub = '';
 
 		for(var j = mask.length - 1; j >= 0; --j)
 		{
 			digit = (i % mask[j]);
-			combination = digit.toString() + combination;
+			sub = Math.floor(digit) + sub;
 		}
 
-		result.push(combination);
+		result[k++] = sub;
 	}
 
 	if(result.length === 0)

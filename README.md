@@ -23,7 +23,7 @@ time(!) I'm usually working with CommonJS modules, using
 <br><br>
 
 ### News
-* \[**2025-10-01**\] New script [**`debug-links.js`**](#debuglinksjs), v**0.1.0**;
+* \[**2025-10-01**\] New script [**`debug-links.js`**](#debuglinksjs), v**0.1.1**;
 * \[**2025-09-30**\] Update in [**`debug.js`**](#debugjs), v**1.3.0**;
 * \[**2025-09-05**\] New [**`transposition.js`**](#transpositionjs), v**0.1.0**;
 * \[**2025-05-31**\] Updated the [**`reflection`.js**](#reflectionjs), v**3.3.0**;
@@ -481,9 +481,10 @@ The logical extension to my [**`debug.js`**](#debugjs), here above.
 <img id="debuglinksjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%debug-links.js%60" />
 </a>
 
-```When I argue with the mask `21`, the symbolic links this script *could*
+When I argue with the mask `21`, the symbolic links this script *could*
 generate (or just output them on screen) are [ 00, 01, 10, 11, 20, 21 ];
-```
+
+* [Version v**0.1.1**](src/debug-links.js) (created **2025-10-01**)
 
 ### `transposition.js`
 
