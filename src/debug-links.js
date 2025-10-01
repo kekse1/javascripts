@@ -18,6 +18,9 @@
  */
 
 //
+const DEFAULT_ALLOW_ZERO = true;
+
+//
 import * as globals from '../shared/globals.js';
 import * as server from '../shared/server.js';
 import fs from 'node:fs';
@@ -85,7 +88,7 @@ const checkMask = (_mask, _throw = true) => {
 			return null;
 		}
 		
-		if(_mask[i] === 0)
+		if(!DEFAULT_ALLOW_ZERO && _mask[i] === 0)
 		{
 			if(_throw)
 			{
