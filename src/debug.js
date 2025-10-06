@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://norbert.com.es/
- * v1.3.0
+ * v1.3.1
  */
 
 /*
@@ -22,6 +22,13 @@
  * this was meant to be! ;-)
  *
  */
+
+//
+//if calling `DEBUG(_key)` without `DEBUG.DEBUG` enabled,
+//either throw an exception, or return `DEFAULT_NON_DEBUG_VALUE`.
+//
+const DEFAULT_NON_DEBUG_THROW = true;
+const DEFAULT_NON_DEBUG_VALUE = null;
 
 //
 const DEBUG = (... _args) => DEBUG.get(... _args);
@@ -123,6 +130,11 @@ const create = (_key, _value, ... _param) => {
 
 //
 DEBUG.has = (_key) => {
+	if(!DEBUG.DEBUG)
+	{
+		return null;
+	}
+
 	if(typeof _key === 'number')
 	{
 		return DEBUG.ID.has(_key);
@@ -155,6 +167,16 @@ DEBUG.get = (_key, _raw = false) => {
 		return !!DEBUG.DEBUG;
 	}
 
+	if(!DEBUG.DEBUG)
+	{
+		if(DEFAULT_NON_DEBUG_THROW)
+		{
+			throw new Error('Debug state is DISABLED');
+		}
+
+		return DEFAULT_NON_DEBUG_VALUE;
+	}
+
 	if(!DEBUG.MAP.has(_key = checkKey(_key, false)))
 	{
 		if(DEBUG.DEBUG) throw new Error('There\'s no such item' +
@@ -172,6 +194,11 @@ DEBUG.raw = (_key) => DEBUG.get(_key, true);
 DEBUG.id = (_key) => DEBUG.get(_key, true).id;
 
 DEBUG.list = (_raw = false) => {
+	if(!DEBUG.DEBUG)
+	{
+		return null;
+	}
+
 	const result = new Array(DEBUG.count());
 	var index = 0;
 
