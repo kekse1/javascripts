@@ -3,7 +3,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://github.com/kekse1/javascripts/
- * v0.3.0
+ * v0.3.1
  */
 
 /*
@@ -97,6 +97,16 @@ const checkMask = (_mask, _throw = true) => {
 			
 			return null;
 		}
+
+		if(_mask[i] < 0)
+		{
+			if(_throw)
+			{
+				return syntax(5);
+			}
+
+			return null;
+		}
 		
 		++_mask[i];
 	}
@@ -144,7 +154,7 @@ const proceed = () => {
 	if(result.length === 0)
 	{
 		console.error('Unexpected...');
-		return process.exit(5);
+		return process.exit(6);
 	}
 
 	return finish(result);//.sort(true);//!?
