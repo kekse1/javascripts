@@ -13,6 +13,9 @@
  * Here's an example how to use the `.json` output files:
  * 	https://kekse.biz/home/downloads/downloads.js
  *
+ * See also the example starter shell script './list.sh'..
+ * .. and maybe: https://github.com/kekse1/v4/#scripts ...
+ *
  */
 
 //

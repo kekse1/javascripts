@@ -532,6 +532,9 @@ See also [my **`v4`** repository](https://github.com/kekse1/v4/#scripts).
 
 ![Example screenshot](./img/list.js.png)
 
+> [!TIP]
+> See also this [shell startup script](./src/list.sh) as an example.
+
 <br><br>
 <br>
 
