@@ -529,6 +529,10 @@ It's up to you how to handle the `.json` files. Here's one example from
 [my website](https://kekse.biz/):
 	[`downloads.js`](https://kekse.biz/home/downloads/downloads.js).
 
+See also [my **`v4`** repository](https://github.com/kekse1/v4/)
+
+![Example screenshot](./img/list.js.png)
+
 <br><br>
 <br>
 
