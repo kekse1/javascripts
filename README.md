@@ -23,6 +23,7 @@ time(!) I'm usually working with CommonJS modules, using
 <br><br>
 
 ### News
+* \[**2025-11-16**\] Copied my [**`list.js`**](#listjs) to this repository!
 * \[**2025-10-09**\] Updated the [**`debug-links.js`**](#debuglinksjs), v**0.3.1**;
 * \[**2025-10-06**\] Updated the [**`debug.js`**](#debugjs), v**1.3.1**;
 * \[**2025-09-05**\] New [**`transposition.js`**](#transpositionjs), v**0.1.0**;
@@ -68,6 +69,7 @@ time(!) I'm usually working with CommonJS modules, using
 	* [`debug`.js](#debugjs)
 	* [`debug-links`.js](#debuglinksjs)
 	* [`transposition`.js](#transpositionjs)
+	* [`list`.js](#listjs)
 3. [Contact](#contact)
 4. [Copyright and License](#copyright-and-license)
 
@@ -502,7 +504,33 @@ Only one function. ... creates the transposition of a 2D-/3D-Matrix (as Array!).
 Actually it's 2D, but to be complete I also integrated a depth (so the 3D axis),
 which will *not* change.
 
-<br><br><br>
+<br><br>
+
+### `list.js`
+
+<a href="src/list.js">
+<img id="listjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60list.js%60" />
+</a>
+
+This is my helper for my [**private website**](https://kekse.biz/).
+It's there to index the files I've published for downloading.
+
+* [Version v**0.4.0**](src/list.js) (updated **2025-11-16**)
+
+Creates a `.json` output file. With their hash sums. Those hashes are also
+there for comparison, so changes will be marked specially. This way I can
+show new, removed or changed files (for a '**Last Update**' info), e.g.
+
+Now also supports **progress bars** - I'm using them when I re-create the index
+for my [Large Language **Models**](https://kekse.biz/?~models), where it takes
+some time for 2-3 TiB...
+
+It's up to you how to handle the `.json` files. Here's one example from
+[my website](https://kekse.biz/):
+	[`downloads.js`](https://kekse.biz/home/downloads/downloads.js).
+
+<br><br>
+<br>
 
 # Contact
 <img src="https://kekse.biz/github.php?override=github:javascripts&draw&text=javascripts@kekse.biz&angle=6&size=38pt&fg=150,20,90&font=OpenSans&ro&readonly&h=64&v=16" />
