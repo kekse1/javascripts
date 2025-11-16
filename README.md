@@ -528,7 +528,7 @@ some time for 2-3 TiB...
 It's up to you how to handle the `.json` files. Here's one example from
 [my website](https://kekse.biz/):
 	[`downloads.js`](https://kekse.biz/home/downloads/downloads.js).
-See also [my **`v4`** repository](https://github.com/kekse1/v4/).
+See also [my **`v4`** repository](https://github.com/kekse1/v4/#scripts).
 
 ![Example screenshot](./img/list.js.png)
 
