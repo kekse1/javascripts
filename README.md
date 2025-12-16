@@ -13,16 +13,18 @@ time(!) I'm usually working with CommonJS modules, using
 `import` and `export`). So maybe you also want my own
 [`package.json`](src/package.json)?
 
+<!--
 > [!NOTE]
 > For the future I'm planning to sort all the scripts in here by their line counts. **JFYI**..
+  -->
 
-> [!NOTE]
+> [!IMPORTANT]
 > **JFYI**: I really dislike [npm.js](https://npmjs.org/) and the inclusion of so many
 > modules I could write by myself as well. Don't expect me to use it..!
 
 <br><br>
 
-### News
+<!--### News
 * \[**2025-11-16**\] Copied my [**`list.js`**](#listjs) to this repository!
 * \[**2025-10-09**\] Updated the [**`debug-links.js`**](#debuglinksjs), v**0.3.1**;
 * \[**2025-10-06**\] Updated the [**`debug.js`**](#debugjs), v**1.3.1**;
@@ -41,7 +43,8 @@ time(!) I'm usually working with CommonJS modules, using
 * \[**2024-09-24**\] **Moved** the [**`offset`.js**](#offsetjs) script to my [new **`utilities`** repository](https://github.com/kekse1/utilities/);
 * \[**2024-09-24**\] Created this repository, to move only the JavaScripts from my [**`scripts` repository**](https://github.com/kekse1/scripts/) to here.
 
-<br><br>
+<br><br>-->
+<br>
 
 ## Index
 1. [News](#news)
