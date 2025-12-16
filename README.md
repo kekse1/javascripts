@@ -18,7 +18,8 @@ time(!) I'm usually working with CommonJS modules, using
 > For the future I'm planning to sort all the scripts in here by their line counts. **JFYI**..
   -->
 
-<br><br>
+<br><br><br>
+
 > [!IMPORTANT]
 > **JFYI**: I really **dislike** [npm.js](https://npmjs.org/) and the inclusion
 > of so many modules I could write by myself as well. Don't expect me to use it..!
@@ -26,7 +27,7 @@ time(!) I'm usually working with CommonJS modules, using
 > [!TIP]
 > "What I cannot create, I do not understand." (Richard Feynman)
 
-<br><br>
+<br><br><br>
 
 <!--### News
 * \[**2025-11-16**\] Copied my [**`list.js`**](#listjs) to this repository!
@@ -48,7 +49,6 @@ time(!) I'm usually working with CommonJS modules, using
 * \[**2024-09-24**\] Created this repository, to move only the JavaScripts from my [**`scripts` repository**](https://github.com/kekse1/scripts/) to here.
 
 <br><br>-->
-<br>
 
 ## Index
 1. [News](#news)
