@@ -20,8 +20,11 @@ time(!) I'm usually working with CommonJS modules, using
 
 <br><br>
 > [!IMPORTANT]
-> **JFYI**: I really dislike [npm.js](https://npmjs.org/) and the inclusion of so many
-> modules I could write by myself as well. Don't expect me to use it..!
+> **JFYI**: I really **dislike** [npm.js](https://npmjs.org/) and the inclusion
+> of so many modules I could write by myself as well. Don't expect me to use it..!
+
+> [!TIP]
+> "What I cannot create, I do not understand." (Richard Feynman)
 
 <br><br>
 
