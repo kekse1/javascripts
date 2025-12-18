@@ -31,7 +31,8 @@ time(!) I'm usually working with CommonJS modules, using
 
 <br><br><br>
 
-<!--### News
+### News
+* \[**2025-12-18**\] Tiny [**`debug.js`**](#debugjs) update, v**1.3.2**;
 * \[**2025-11-16**\] Copied my [**`list.js`**](#listjs) to this repository!
 * \[**2025-10-09**\] Updated the [**`debug-links.js`**](#debuglinksjs), v**0.3.1**;
 * \[**2025-10-06**\] Updated the [**`debug.js`**](#debugjs), v**1.3.1**;
@@ -50,7 +51,7 @@ time(!) I'm usually working with CommonJS modules, using
 * \[**2024-09-24**\] **Moved** the [**`offset`.js**](#offsetjs) script to my [new **`utilities`** repository](https://github.com/kekse1/utilities/);
 * \[**2024-09-24**\] Created this repository, to move only the JavaScripts from my [**`scripts` repository**](https://github.com/kekse1/scripts/) to here.
 
-<br><br>-->
+<br><br>
 
 ## Index
 1. [News](#news)
@@ -463,7 +464,7 @@ This code is an example on how you could handle or manage
 possible _*DEBUG* switches_! ...
 ```
 
-* [Version v**1.3.1**](src/debug.js) (updated **2025-10-06**)
+* [Version v**1.3.2**](src/debug.js) (updated **2025-12-18**)
 
 ```
 	# `const DEBUG_*` ... // no more.

@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://norbert.com.es/
- * v1.3.1
+ * v1.3.2
  */
 
 /*
@@ -31,7 +31,22 @@ const DEFAULT_NON_DEBUG_THROW = true;
 const DEFAULT_NON_DEBUG_VALUE = null;
 
 //
-const DEBUG = (... _args) => DEBUG.get(... _args);
+const DEBUG = (... _args) => {
+	if(typeof _args[0] === 'boolean')
+	{
+		if(_args[0] === DEBUG.DEBUG)
+		{
+			return false;
+		}
+
+		DEBUG.DEBUG = _args[0];
+		return true;
+	}
+
+	return DEBUG.get(... _args);
+};
+
+//
 DEBUG.MAP = new Map(); DEBUG.ID = new Map();
 export default DEBUG;
 
