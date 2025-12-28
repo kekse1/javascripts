@@ -32,6 +32,11 @@ const DEFAULT_NON_DEBUG_VALUE = null;
 
 //
 const DEBUG = (... _args) => {
+	if(_args.length === 0)
+	{
+		return !!DEBUG.DEBUG;
+	}
+
 	if(typeof _args[0] === 'boolean')
 	{
 		if(_args[0] === DEBUG.DEBUG)
@@ -52,7 +57,8 @@ const DEBUG = (... _args) => {
 };
 
 //
-DEBUG.MAP = new Map(); DEBUG.ID = new Map();
+DEBUG.MAP = new Map();
+DEBUG.ID = new Map();
 export default DEBUG;
 
 //
