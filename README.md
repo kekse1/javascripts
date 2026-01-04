@@ -32,8 +32,12 @@ time(!) I'm usually working with CommonJS modules, using
 <br><br><br>
 
 ### News
+<<<<<<< HEAD
 * \[**2026-01-04**\] Changed my [**`debug-links.js`**](#debuglinksjs) to v**0.3.2**;
 * \[**2025-12-18**\] Tiny [**`debug.js`**](#debugjs) update, v**1.3.2**;
+=======
+* \[**2025-12-28**\] Updates in [**`debug.js`**](#debugjs), v**1.4.0**;
+>>>>>>> 3f80984a894bf53811878d4ee096152c090a9b6d
 * \[**2025-11-16**\] Copied my [**`list.js`**](#listjs) to this repository!
 * \[**2025-10-06**\] Updated the [**`debug.js`**](#debugjs), v**1.3.1**;
 * \[**2025-09-05**\] New [**`transposition.js`**](#transpositionjs), v**0.1.0**;
@@ -464,7 +468,7 @@ This code is an example on how you could handle or manage
 possible _*DEBUG* switches_! ...
 ```
 
-* [Version v**1.3.2**](src/debug.js) (updated **2025-12-18**)
+* [Version v**1.4.0**](src/debug.js) (updated **2025-12-28**)
 
 ```
 	# `const DEBUG_*` ... // no more.
