@@ -32,9 +32,9 @@ time(!) I'm usually working with CommonJS modules, using
 <br><br><br>
 
 ### News
+* \[**2026-01-04**\] Changed my [**`debug-links.js`**](#debuglinksjs) to v**0.3.2**;
 * \[**2025-12-18**\] Tiny [**`debug.js`**](#debugjs) update, v**1.3.2**;
 * \[**2025-11-16**\] Copied my [**`list.js`**](#listjs) to this repository!
-* \[**2025-10-09**\] Updated the [**`debug-links.js`**](#debuglinksjs), v**0.3.1**;
 * \[**2025-10-06**\] Updated the [**`debug.js`**](#debugjs), v**1.3.1**;
 * \[**2025-09-05**\] New [**`transposition.js`**](#transpositionjs), v**0.1.0**;
 * \[**2025-05-31**\] Updated the [**`reflection`.js**](#reflectionjs), v**3.3.0**;
@@ -496,7 +496,7 @@ The logical extension to my [**`debug.js`**](#debugjs), here above.
 When I argue with the mask `21`, the symbolic links this script *could*
 generate (or just output them on screen) are [ 00, 01, 10, 11, 20, 21 ];
 
-* [Version v**0.3.1**](src/debug-links.js) (created **2025-10-09**)
+* [Version v**0.3.2**](src/debug-links.js) (changed **2026-01-04**)
 
 That's the way I'm debugging my app. The same data source,
 different debug switch values (and each w/ a file named so).

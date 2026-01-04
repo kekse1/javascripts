@@ -3,7 +3,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://github.com/kekse1/javascripts/
- * v0.3.1
+ * v0.3.2
  */
 
 /*
@@ -173,16 +173,38 @@ const finish = (_list) => {
 		process.exit();
 	}
 
-	for(const item of _list)
+	var existed = 0, created = 0;
+
+	var p; for(const item of _list)
 	{
-		fs.symlinkSync(target,
-			path.join(process.cwd(), item + extension));
-		console.log('./' + item + extension);
+		p = path.join(process.cwd(), item + extension);
+
+		if(fs.existsSync(p))
+		{
+			++existed;
+			p = path.basename(p);
+			console.warn('Already existed: ' + p.quote());
+			continue;
+		}
+
+		fs.symlinkSync(target, p);
+		p = path.relative(process.cwd(), p);
+		console.log(p);
+		++created;
 	}
 
-	console.log(EOL + 'Finished.. just created ' +
-		_list.length.toLocaleString().bold(true).info(true) +
-		' symbolic links to ' + target.bold(true).error(true).quote() + '!');
+	if(created)
+	{
+		console.info(EOL + 'Finished.. just created ' +
+			created.toLocaleString().bold(true).warn(true) +
+			' symbolic links to ' + target.error(true).quote() + '!');
+		if(existed) console.warn('But ' + existed.toLocaleString().
+			bold(true).error(true) + ' file' + (existed === 1 ? '' : 's') +
+				' already existed!');
+	}
+	else console.error(EOL + 'All ' + _list.length.toLocaleString().
+		bold(true).warn(true) + ' files already existed!');
+
 	process.exit();
 };
 
