@@ -456,27 +456,9 @@ This one has it's [own repository](https://github.com/kekse1/levenshtein.js/).
 <img id="debugjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60debug.js%60" />
 </a>
 
-```
-This code is an example on how you could handle or manage
-possible _*DEBUG* switches_! ...
-```
+This code is an example on how you could handle/manage _*DEBUG* switches_.
 
 * [Version v**1.5.0**](src/debug.js) (updated **2026-01-11**)
-
-```
-    # `const DEBUG_*` ... // no more.
-
-In the newest version >=1.0.0 my code is really much more
-compact.. nearly not worth mentioning it .. but it helps.
-
-I realized that it's not really great to include the file
-names/paths as first map key; because it was my intention
-to NOT do so: my code had many 'const DEBUG_`, which were
-partially the same over many files.
-
-I wanted to define them once, on a global location. .. so
-this was meant to be! ;-)
-```
 
 See also my script [**`debug-links.js`**](#debuglinksjs) below.
 
