@@ -211,7 +211,11 @@ DEBUG.get = (_key, _raw = false) => {
 	}
 	
 	const result = DEBUG.MAP.get(_key);
-	if(_raw) return result;
+
+	if(_raw) return Object.assign({
+		DEBUG: !!DEBUG.DEBUG,
+		THROW: !!DEBUG.THROW },
+			result);
 	
 	if(DEBUG.DEBUG)
 	{
