@@ -463,7 +463,8 @@ possible _*DEBUG* switches_! ...
 
 * [Version v**1.5.0**](src/debug.js) (updated **2026-01-11**)
 
-```	# `const DEBUG_*` ... // no more.
+```
+    # `const DEBUG_*` ... // no more.
 
 In the newest version >=1.0.0 my code is really much more
 compact.. nearly not worth mentioning it .. but it helps.
@@ -479,7 +480,8 @@ this was meant to be! ;-)
 
 See also my script [**`debug-links.js`**](#debuglinksjs) below.
 
-```NEW[v1.5.0]: according to `DEBUG.THROW` if `DEBUG.DEBUG`
+```
+NEW[v1.5.0]: according to `DEBUG.THROW` if `DEBUG.DEBUG`
 	[mode] is disabled, you can throw an exception like
 	before, or we'll return the new DEFAULT VALUE you'd
 	use in 'production'. :-)
