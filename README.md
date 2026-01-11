@@ -484,7 +484,8 @@ See also my script [**`debug-links.js`**](#debuglinksjs) below.
 	before, or we'll return the new DEFAULT VALUE you'd
 	use in 'production'. :-)
 	.. see the 'DEFAULT_THROW' (is set to (false) now);
-	it's the default setting for the new `DEBUG.THROW`.```
+	it's the default setting for the new `DEBUG.THROW`.
+```
 
 <br><br>
 
