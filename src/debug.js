@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://norbert.com.es/
- * v1.4.0
+ * v1.5.0
  */
 
 /*
@@ -21,14 +21,18 @@
  * I wanted to define them once, on a global location. .. so
  * this was meant to be! ;-)
  *
+ * NEW[v1.5.0]: according to `DEBUG.THROW` if `DEBUG.DEBUG`
+ * 	[mode] is disabled, you can throw an exception like
+ *	before, or we'll return the new DEFAULT VALUE you'd
+ *	use in 'production'. :-)
+ *	.. see the 'DEFAULT_THROW' (is set to (false) now);
+ *	it's the default setting for the new `DEBUG.THROW`.
+ *
  */
 
 //
-//if calling `DEBUG(_key)` without `DEBUG.DEBUG` enabled,
-//either throw an exception, or return `DEFAULT_NON_DEBUG_VALUE`.
-//
-const DEFAULT_NON_DEBUG_THROW = true;
-const DEFAULT_NON_DEBUG_VALUE = null;
+const DEFAULT_DEBUG = true;
+const DEFAULT_THROW = false;
 
 //
 const DEBUG = (... _args) => {
@@ -39,7 +43,7 @@ const DEBUG = (... _args) => {
 
 	if(typeof _args[0] === 'boolean')
 	{
-		if(_args[0] === DEBUG.DEBUG)
+		if(_args[0] === !!DEBUG.DEBUG)
 		{
 			return false;
 		}
@@ -62,7 +66,8 @@ DEBUG.ID = new Map();
 export default DEBUG;
 
 //
-DEBUG.DEBUG = true; // 'base get() request' if undefined _key param.
+DEBUG.DEBUG = DEFAULT_DEBUG;
+DEBUG.THROW = DEFAULT_THROW;
 
 //
 const checkID = (_id, _check = false) => {
@@ -103,7 +108,7 @@ const checkKey = (_key, _check = false) => {
 	return _key;
 };
 
-const create = (_key, _value, ... _param) => {
+const create = (_key, _value, _default, ... _param) => {
 	if(typeof _key !== 'string' || _key.length === 0)
 	{
 		throw new Error('Key needs to be a non-empty String');
@@ -116,10 +121,10 @@ const create = (_key, _value, ... _param) => {
 
 	const result = {
 		id: null,
+		desc: '',
 		key: _key,
 		value: _value,
-		desc: ''
-	};
+		default: _default };
 
 	for(const p of _param)
 	{
@@ -158,7 +163,10 @@ const create = (_key, _value, ... _param) => {
 DEBUG.has = (_key) => {
 	if(!DEBUG.DEBUG)
 	{
-		return null;
+		//if(DEBUG.THROW)
+		//{
+			return null;
+		//}
 	}
 
 	if(typeof _key === 'number')
@@ -184,8 +192,8 @@ DEBUG.clear = () => {
 	return result;
 };
 
-DEBUG.set = (_key, _value, ... _param) => create(
-	_key, _value, ... _param);
+DEBUG.set = (_key, _value, _default, ... _param) => create(
+	_key, _value, _default, ... _param);
 
 DEBUG.get = (_key, _raw = false) => {
 	if(typeof _key === 'undefined')
@@ -193,38 +201,35 @@ DEBUG.get = (_key, _raw = false) => {
 		return !!DEBUG.DEBUG;
 	}
 
-	if(!DEBUG.DEBUG)
-	{
-		if(DEFAULT_NON_DEBUG_THROW)
-		{
-			throw new Error('Debug state is DISABLED');
-		}
-
-		return DEFAULT_NON_DEBUG_VALUE;
-	}
-
+	//it's very important to stay sure that
+	//the debug values are correctly used!!
 	if(!DEBUG.MAP.has(_key = checkKey(_key, false)))
 	{
-		if(DEBUG.DEBUG) throw new Error('There\'s no such item' +
+		throw new Error('There\'s no such item' +
 			(typeof _key === 'string' ?
 				' `' + _key + '`' : ''));
-		return undefined;
 	}
 	
 	const result = DEBUG.MAP.get(_key);
-	if(!_raw) return result.value;
-	return result;
+	if(_raw) return result;
+	
+	if(DEBUG.DEBUG)
+	{
+		return result.value;
+	}
+	
+	if(DEBUG.THROW)
+	{
+		throw new Error('DEBUG MODE is disabled!');
+	}
+	
+	return result.default;
 };
 
 DEBUG.raw = (_key) => DEBUG.get(_key, true);
 DEBUG.id = (_key) => DEBUG.get(_key, true).id;
 
 DEBUG.list = (_raw = false) => {
-	if(!DEBUG.DEBUG)
-	{
-		return null;
-	}
-
 	const result = new Array(DEBUG.count());
 	var index = 0;
 

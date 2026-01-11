@@ -32,8 +32,8 @@ time(!) I'm usually working with CommonJS modules, using
 <br><br><br>
 
 ### News
+* \[**2026-01-11**\] Big change in my [**`debug.js`**](#debugjs), v**1.5.0**;
 * \[**2026-01-04**\] Changed my [**`debug-links.js`**](#debuglinksjs) to v**0.3.2**;
-* \[**2025-12-28**\] Updates in [**`debug.js`**](#debugjs), v**1.4.0**;
 * \[**2025-11-16**\] Copied my [**`list.js`**](#listjs) to this repository!
 * \[**2025-10-06**\] Updated the [**`debug.js`**](#debugjs), v**1.3.1**;
 * \[**2025-09-05**\] New [**`transposition.js`**](#transpositionjs), v**0.1.0**;
@@ -464,10 +464,9 @@ This code is an example on how you could handle or manage
 possible _*DEBUG* switches_! ...
 ```
 
-* [Version v**1.4.0**](src/debug.js) (updated **2025-12-28**)
+* [Version v**1.5.0**](src/debug.js) (updated **2026-01-11**)
 
-```
-	# `const DEBUG_*` ... // no more.
+```	# `const DEBUG_*` ... // no more.
 
 In the newest version >=1.0.0 my code is really much more
 compact.. nearly not worth mentioning it .. but it helps.
@@ -482,6 +481,13 @@ this was meant to be! ;-)
 ```
 
 See also my script [**`debug-links.js`**](#debuglinksjs) below.
+
+```NEW[v1.5.0]: according to `DEBUG.THROW` if `DEBUG.DEBUG`
+	[mode] is disabled, you can throw an exception like
+	before, or we'll return the new DEFAULT VALUE you'd
+	use in 'production'. :-)
+	.. see the 'DEFAULT_THROW' (is set to (false) now);
+	it's the default setting for the new `DEBUG.THROW`.```
 
 <br><br>
 
