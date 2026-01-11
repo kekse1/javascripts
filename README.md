@@ -20,16 +20,13 @@ time(!) I'm usually working with CommonJS modules, using
 > For the future I'm planning to sort all the scripts in here by their line counts. **JFYI**..
   -->
 
-<br><br><br>
+<br><br>
 
 > [!IMPORTANT]
 > **JFYI**: I really **dislike** [npm.js](https://npmjs.org/) and the inclusion
 > of so many modules I could write by myself as well. Don't expect me to use it..!
 
-> [!TIP]
-> "What I cannot create, I do not understand." (Richard Feynman)
-
-<br><br><br>
+<br><br>
 
 ### News
 * \[**2026-01-11**\] Big change in my [**`debug.js`**](#debugjs), v**1.5.0**;
