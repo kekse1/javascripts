@@ -3,7 +3,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://github.com/kekse1/javascripts/
- * v0.3.2
+ * v0.4.0
  */
 
 /*
@@ -14,6 +14,8 @@
  *
  * When I argue with the mask `2,1`, the symbolic links this script *could*
  * generate (or just output them on screen) are [ 0,0; 0,1; 1,0; 1,1; 2,0; 2,1 ];
+ *
+ * NEW[v0.4.0]: optionally you can label your variables in the mask (`one=1,two=2`);
  *
  */
 
@@ -34,6 +36,7 @@ const syntax = (_exit = 255) => {
 	if(byte(_exit)) process.exit(_exit);
 };
 
+const label = [];
 var mask = process.argv[2];
 var target, extension;
 
@@ -74,8 +77,25 @@ const checkMask = (_mask, _throw = true) => {
 
 	_mask = _mask.split(',');
 
-	for(var i = 0; i < _mask.length; ++i)
+	var idx, temp; for(var i = 0; i < _mask.length; ++i)
 	{
+		if((idx = _mask[i].lastIndexOf('=')) > -1)
+		{
+			temp = _mask[i].substr(0, idx);
+			
+			if(label.includes(temp))
+			{
+				return syntax(6);
+			}
+			
+			label[i] = temp;
+			_mask[i] = _mask[i].substr(idx + 1);
+		}
+		else
+		{
+			label[i] = '';
+		}
+		
 		_mask[i] = Number(_mask[i]);
 		
 		if(Number.isNaN(_mask[i]))
@@ -133,22 +153,27 @@ const countLinks = (_mask) => {
 const count = countLinks(mask);
 
 const proceed = () => {
-	var sub, base, digit, rest;
+	var sub = [], base, digit, rest;
 	const result = [];
 
 	for(var i = 0, k = 0; i < count; ++i)
 	{
-		sub = '';
 		rest = i;
 
 		for(var j = mask.length - 1; j >= 0; --j)
 		{
-			sub = Math.floor(rest % mask[j]) +
-				(sub ? ',' : '') + sub;
+			sub.unshift(Math._floor(rest % mask[j]));
+			
+			if(label[j])
+			{
+				sub[0] = label[j] + '=' + sub[0];
+			}
+			
 			rest /= mask[j];
 		}
 
-		result[k++] = sub;
+		result[k++] = sub.join(',');
+		sub.length = 0;
 	}
 
 	if(result.length === 0)
@@ -157,7 +182,7 @@ const proceed = () => {
 		return process.exit(6);
 	}
 
-	return finish(result);//.sort(true);//!?
+	return finish(result);
 };
 
 const finish = (_list) => {
