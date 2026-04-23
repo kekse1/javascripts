@@ -169,7 +169,8 @@ const proceed = () => {
 				sub[0] = label[j] + '=' + sub[0];
 			}
 			
-			rest = Math.floor(rest / mask[j]); //rest /= mask[j];
+			rest /= mask[j];
+			//rest = Math.floor(rest / mask[j]); //rest /= mask[j];
 		}
 
 		result[k++] = sub.join(',');
