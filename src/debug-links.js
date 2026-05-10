@@ -3,7 +3,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://github.com/kekse1/javascripts/
- * v0.4.0
+ * v0.4.1
  */
 
 /*
@@ -181,6 +181,7 @@ const proceed = () => {
 			}
 			
 			rest /= mask[j];
+			//rest = Math.floor(rest / mask[j]); //rest /= mask[j];
 		}
 
 		result[k++] = sub.join(',');
