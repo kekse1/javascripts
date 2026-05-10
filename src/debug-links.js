@@ -7,6 +7,17 @@
  */
 
 /*
+ * UPDATE/INFO: Nowadays I'm using bash internals (like `{0..3}` etc.)
+ * to create my debug links.
+ *
+ * So this script is rather interesting for the construction
+ * of numbers in various, changing(!) radix/base.
+ *
+ * For your info.. so this script will never get updated again.
+ *
+ */
+
+/*
  * Since I'm massively debugging my project(s) [see also my `debug.js` script],
  * I wanted a way to *automatically* create my debug symlinks: all possible
  * constellations, when I've got a number of debug variables that can be set

@@ -29,7 +29,6 @@ time(!) I'm usually working with CommonJS modules, using
 <br><br>
 
 ### News
-* \[**2026-01-15**\] Nice change in my [**`debug-links.js`**](#debuglinksjs), v**0.4.0**;
 * \[**2026-01-11**\] Big change in my [**`debug.js`**](#debugjs), v**1.5.0**;
 * \[**2025-11-16**\] Copied my [**`list.js`**](#listjs) to this repository!
 * \[**2025-10-06**\] Updated the [**`debug.js`**](#debugjs), v**1.3.1**;
@@ -74,7 +73,6 @@ time(!) I'm usually working with CommonJS modules, using
 	* [`fold.css`.js](#foldcssjs)
 	* [`levenshtein`.js](#levenshteinjs)
 	* [`debug`.js](#debugjs)
-	* [`debug-links`.js](#debuglinksjs)
 	* [`transposition`.js](#transpositionjs)
 	* [`list`.js](#listjs)
 3. [Contact](#contact)
@@ -460,7 +458,7 @@ This code is an example on how you could handle/manage _*DEBUG* switches_.
 
 * [Version v**1.5.0**](src/debug.js) (updated **2026-01-11**)
 
-See also my script [**`debug-links.js`**](#debuglinksjs) below.
+<!--See also my script [**`debug-links.js`**](#debuglinksjs) below.-->
 
 ```
 NEW[v1.5.0]: according to `DEBUG.THROW` if `DEBUG.DEBUG`
@@ -473,7 +471,7 @@ NEW[v1.5.0]: according to `DEBUG.THROW` if `DEBUG.DEBUG`
 
 <br><br>
 
-### `debug-links.js`
+<!--### `debug-links.js`
 
 The logical extension to my [**`debug.js`**](#debugjs), here above.
 
@@ -492,6 +490,8 @@ different debug switch values (and each w/ a file named so).
 > [!TIP]
 > New sinced v**0.4.0**: optional **labeled** mask (instead of just counting
 > you can define a debug variable **name**.
+
+<br><br>-->
 
 ### `transposition.js`
 
