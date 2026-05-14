@@ -1,7 +1,7 @@
 //
 // Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
 // https://kekse.biz/ https://github.com/kekse1/javascripts/
-// v0.2.0
+// v0.2.1
 //
 // `MultiSet` is like a `Set`, but also counts the items
 // (in their amount). It's extending a regular `Map`.
@@ -12,14 +12,6 @@ const DEFAULT_NEGATIVE = false;
 const DEFAULT_FLOATING = false;
 const DEFAULT_INC = 1;
 const DEFAULT_DEC = 1;
-
-//
-Math.int = (_value, _inverse = false) => {
-	const a = (_value < 0);
-	const b = (!!_inverse);
-	return (((((a&&b)||!(a||b)) ?
-		Math.floor :
-		Math.ceil)(_value)) || 0); };
 
 //
 class MultiSet extends Map
@@ -101,7 +93,7 @@ class MultiSet extends Map
 		}
 		else if((_value % 1) !== 0 && !this.floating)
 		{
-			_value = Math.int(_value);
+			_value = Math.trunc(_value);
 		}
 
 		super.set(_key, _value);
@@ -152,7 +144,7 @@ class MultiSet extends Map
 		}
 		else if((result % 1) !== 0 && !this.floating)
 		{
-			result = Math.int(result);
+			result = Math.trunc(result);
 		}
 
 		super.set(_key, result);
@@ -183,7 +175,7 @@ class MultiSet extends Map
 		}
 		else if((result % 1) !== 0 && !this.floating)
 		{
-			result = Math.int(result);
+			result = Math.trunc(result);
 		}
 
 		super.set(_key, result);

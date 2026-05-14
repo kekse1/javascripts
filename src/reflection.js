@@ -1,7 +1,7 @@
 //
 // Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
 // https://kekse.biz/ https://github.com/kekse1/javascripts/
-// v3.3.0
+// v3.3.1
 //
 // The problem was: depending on your JavaScript *environment*, which also changes
 // e.g. when using <iframe> or so, the base classes are being initialized/declared/..
@@ -37,11 +37,6 @@ const DEFAULT_OBJECT_SET_BOOL = false;	// `Object.set()` will return the set sta
 const DEFAULT_BOUND_HIDE = true;	// without e.g. "bound class"..
 
 //
-Reflect.defineProperty(Math, 'int', { value: (_value, _inverse = false) => {
-	const a = (_value < 0); const b = (!!_inverse);
-	return (((((a&&b)||!(a||b)) ? Math.floor : Math.ceil)(_value)) || 0);
-}});
-
 Reflect.defineProperty(Math, 'getIndex', { value: (_index, _length) => {
 	if(_length < 1)
 	{
@@ -124,7 +119,7 @@ else
 const getPathArray = (_path, _sep = DEFAULT_OBJECT_SEP) => {
 	if(typeof _path === 'number')
 	{
-		return [ Math.int(_path) ];
+		return [ Math.trunc(_path) ];
 	}
 	else if(Array.isArray(_path))
 	{
@@ -164,7 +159,7 @@ const getPathArray = (_path, _sep = DEFAULT_OBJECT_SEP) => {
 		}
 		else if(!isNaN(result[i]))
 		{
-			result[i] = Math.int(Number(result[i]));
+			result[i] = Math.trunc(Number(result[i]));
 		}
 	}
 	

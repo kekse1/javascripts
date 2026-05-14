@@ -222,7 +222,7 @@ on disk or via network transmission, etc.
 <img id="reflectionjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60reflection.js%60" />
 </a>
 
-* [Version v**3.3.0**](src/reflection.js) (updated **2025-05-31**)
+* [Version v**3.3.1**](src/reflection.js) (updated **2026-05-14**)
 
 My solution for JavaScript's `instanceof` problem, so when in multiple environments
 the classes are initialized/declared not once. In this case, comparing two environments,
@@ -255,7 +255,7 @@ is in your arguments).
 <img id="multisetjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60multiset.js%60" />
 </a>
 
-* [Version v**0.2.0**](src/multiset.js) (created **2024-04-30**)
+* [Version v**0.2.1**](src/multiset.js) (created **2026-05-14**)
 
 My `MultiSet` class: extends `Map`, but works like a `Set`, with the difference
 that it also counts the amount of items in this set.
