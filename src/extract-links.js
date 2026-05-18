@@ -3,7 +3,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://github.com/kekse1/
- * v0.1.1
+ * v0.1.2
  */
  
 /*
@@ -15,6 +15,7 @@
 const DEFAULT_BUFFER = (1024 * 64);
 const DEFAULT_SEPARATORS = [ '\'', '"', '`' ];
 const DEFAULT_IGNORE_COMMENTS = true;
+const DEFAULT_OFFSET_GET_INDEX = true;
 
 //
 Reflect.defineProperty(Math, 'getIndex', { value: (_index, _length) => {
@@ -32,6 +33,11 @@ Reflect.defineProperty(Math, 'getIndex', { value: (_index, _length) => {
 
 Reflect.defineProperty(String.prototype, 'at', { value: function(_offset, _compare, _case_sensitive = false)
 {
+	if(DEFAULT_OFFSET_GET_INDEX)
+	{
+		_offset = Math.getIndex(_offset, this.length);
+	}
+
 	var data = this.substr(_offset, _compare.length);
 	
 	if(typeof _compare === 'number')
