@@ -250,7 +250,7 @@ const finish = (_data) => {
 		console.warn('              Errors: ' + (errors ?
 			errors.toLocaleString() : 'NONE'));
 		if(DEFAULT_UNIQUE_HOST) console.debug(
-			'      Multiple Hosts: ' + (multiple ?
+			'          Same Hosts: ' + (multiple ?
 			multiple.toLocaleString() : 'NONE'));
 
 		if(RESULT.length === 0)
