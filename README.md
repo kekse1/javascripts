@@ -29,6 +29,7 @@ time(!) I'm usually working with CommonJS modules, using
 <br><br>
 
 ### News
+* \[**2026-05-18**\] New [**`extract-links.js`**](#extractlinksjs), the tiny/easy version of [**`links.js`**](#linksjs), v**0.1.1**;
 * \[**2026-01-11**\] Big change in my [**`debug.js`**](#debugjs), v**1.5.0**;
 * \[**2025-11-16**\] Copied my [**`list.js`**](#listjs) to this repository!
 * \[**2025-10-06**\] Updated the [**`debug.js`**](#debugjs), v**1.3.1**;
