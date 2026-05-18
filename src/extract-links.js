@@ -3,7 +3,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://github.com/kekse1/
- * v0.1.2
+ * v0.1.3
  */
  
 /*
@@ -16,6 +16,7 @@ const DEFAULT_BUFFER = (1024 * 64);
 const DEFAULT_SEPARATORS = [ '\'', '"', '`' ];
 const DEFAULT_IGNORE_COMMENTS = true;
 const DEFAULT_OFFSET_GET_INDEX = true;
+const DEFAULT_UNIQUE_HOST = true;
 
 //
 Reflect.defineProperty(Math, 'getIndex', { value: (_index, _length) => {
@@ -113,7 +114,7 @@ catch(_err)
 }
 
 //
-var inputSize = 0, outputSize = 0, errors = 0, empty = 0;
+var inputSize = 0, outputSize = 0, errors = 0, empty = 0, multiple = 0;
 var TIME = Date.now(); const RESULT = [];
 
 //
@@ -129,19 +130,36 @@ stream.on('data', chunk);
 stream.once('end', end);
 
 //
+const HOST = new Set();
 const NEEDLE = ' href=', COMMENTS = [ '<!--', '-->' ];
 var HREF = null, SEP = null, COMMENT = false;
 
 const pushURL = (_href) => {
 	if(!_href)
 	{
-		++empty;
-		return;
+		return ++empty;
 	}
 	
 	if(BASE) try
 	{
-		_href = new URL(_href, BASE);
+		_href = new URL(_href, BASE).href;
+	}
+	catch(_err)
+	{
+		return ++errors;
+	}
+	
+	if(DEFAULT_UNIQUE_HOST) try
+	{
+		_href = new URL(_href);
+
+		if(HOST.has(_href.host))
+		{
+			return ++multiple;
+		}
+
+		HOST.add(_href.host);
+		_href = _href.href;
 	}
 	catch(_err)
 	{
@@ -231,6 +249,9 @@ const finish = (_data) => {
 			empty.toLocaleString() : 'NONE'));
 		console.warn('              Errors: ' + (errors ?
 			errors.toLocaleString() : 'NONE'));
+		if(DEFAULT_UNIQUE_HOST) console.debug(
+			'      Multiple Hosts: ' + (multiple ?
+			multiple.toLocaleString() : 'NONE'));
 
 		if(RESULT.length === 0)
 		{

@@ -209,7 +209,7 @@ Nice one; have phun.
 
 It's just a really **much easier** version of the above [`links.js`](#linksjs).
 
-* [Version v**0.1.2**](src/extract-links.js) (created **2026-05-18**)
+* [Version v**0.1.3**](src/extract-links.js) (updated **2026-05-18**)
 
 And it works well without any dependencies in your [Node.js](https://nodejs.org/)!
 
