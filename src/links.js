@@ -4,6 +4,9 @@
  * v0.8.3
  */
 
+/* A much easier version is my `extract-links.js`, jfyi.
+ */
+
 //
 const DEFAULT_ENCODING = 'utf8';
 const DEFAULT_ATTRIBS = [ 'href', 'src' ];

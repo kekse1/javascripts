@@ -57,6 +57,7 @@ time(!) I'm usually working with CommonJS modules, using
 	* [`clone`.js](#clonejs)
 	* [`config`.js](#configjs)
 	* [`links`.js](#linksjs)
+	* [`extract-links`.js](#extractlinksjs)
 	* [`bytes`.js](#bytesjs)
 	* [`reflection`.js](#reflectionjs)
 	* [`intersect`.js](#intersectjs)
@@ -197,6 +198,19 @@ e.g. `text/plain`; BUT you need (beneath `.all` or `DEFAULT_ALL`) also at least
 one `.scheme[]` item..
 
 Nice one; have phun.
+
+<br><br>
+
+### `extract-links.js`
+<a href="src/extract-links.js">
+<img id="extractlinksjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60extract-links.js%60" />
+</a>
+
+It's just a really **much easier** version of the above [`links.js`](#linksjs).
+
+* [Version v**0.1.1**](src/extract-links.js) (created **2026-05-18**)
+
+And it works well without any dependencies in your [Node.js](https://nodejs.org/)!
 
 <br><br>
 
