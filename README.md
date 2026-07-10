@@ -1,5 +1,7 @@
 <img src="https://kekse.biz/github.php?draw&override=github:javascripts" />
 
+<br>
+
 Every JavaScript is made by myself, arose out of necessity..
 or because I found it interesting.
 
@@ -552,11 +554,12 @@ See also [my **`v4`** repository](https://github.com/kekse1/v4/#scripts).
 > [!TIP]
 > See also this [shell startup script](./src/list.sh) as an example.
 
-<br><br>
-<br>
+<br><br><br>
 
 # Contact
 <img src="https://kekse.biz/github.php?override=github:javascripts&draw&text=javascripts@kekse.biz&angle=6&size=38pt&fg=150,20,90&font=OpenSans&ro&readonly&h=64&v=16" />
+
+<br>
 
 # Copyright and License
 The Copyright is [(c) Sebastian Kucharczyk](./COPYRIGHT.txt),
