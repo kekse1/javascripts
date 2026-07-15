@@ -32,7 +32,7 @@ time(!) I'm usually working with CommonJS modules, using
 <br><br>
 
 ### News
-* \[**2026-05-18**\] New [**`extract-links.js`**](#extractlinksjs), the tiny/easy version of [**`links.js`**](#linksjs), v**0.1.2**;
+* \[**2026-07-15**\] Updated [**`extract-links.js`**](#extractlinksjs), the tiny/easy version of [**`links.js`**](#linksjs), v**0.1.3**;
 * \[**2026-01-11**\] Big change in my [**`debug.js`**](#debugjs), v**1.5.0**;
 * \[**2025-11-16**\] Copied my [**`list.js`**](#listjs) to this repository!
 * \[**2025-10-06**\] Updated the [**`debug.js`**](#debugjs), v**1.3.1**;
@@ -212,7 +212,7 @@ Nice one; have phun.
 
 It's just a really **much easier** version of the above [`links.js`](#linksjs).
 
-* [Version v**0.1.3**](src/extract-links.js) (updated **2026-05-18**)
+* [Version v**0.1.3**](src/extract-links.js) (updated **2026-07-15**)
 
 And it works well without any dependencies in your [Node.js](https://nodejs.org/)!
 
