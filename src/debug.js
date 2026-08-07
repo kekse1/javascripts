@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://github.com/kekse1/
- * v1.5.0
+ * v1.5.1
  */
 
 /*
@@ -251,6 +251,20 @@ DEBUG.list = (_raw = false) => {
 
 DEBUG.rawList = () => DEBUG.list(true);
 
+DEBUG.map = (_force = false) => {
+	const result = {};
+	const type = ((DEBUG.DEBUG || _force) ?
+		'value' : 'default');
+
+	for(const item of DEBUG.MAP)
+	{
+		result[item[0]] = item[1][type];
+	}
+
+	return result;
+};
+
+//
 DEBUG.remove = (_key) => {
 	const result = DEBUG.MAP.get(_key = checkKey(_key, true));
 	DEBUG.MAP.delete(_key);
