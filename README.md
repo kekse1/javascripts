@@ -32,11 +32,9 @@ time(!) I'm usually working with CommonJS modules, using
 <br><br>
 
 ### News
-* \[**2026-08-07**\] Tiny update in the [**`debug.js`**](#debugjs), v**1.5.1**;
+* \[**2026-08-11**\] Bigger update in my [**`debug.js`**](#debugjs), v**1.6.0**!
 * \[**2026-07-15**\] Updated [**`extract-links.js`**](#extractlinksjs), the tiny/easy version of [**`links.js`**](#linksjs), v**0.1.3**;
-* \[**2026-01-11**\] Big change in my [**`debug.js`**](#debugjs), v**1.5.0**;
 * \[**2025-11-16**\] Copied my [**`list.js`**](#listjs) to this repository!
-* \[**2025-10-06**\] Updated the [**`debug.js`**](#debugjs), v**1.3.1**;
 * \[**2025-09-05**\] New [**`transposition.js`**](#transpositionjs), v**0.1.0**;
 * \[**2025-05-31**\] Updated the [**`reflection`.js**](#reflectionjs), v**3.3.0**;
 * \[**2025-05-24**\] Update in my deep-[**`clone`.js**](#clonejs), v**0.7.0**;
@@ -475,18 +473,11 @@ This one has it's [own repository](https://github.com/kekse1/levenshtein.js/).
 
 This code is an example on how you could handle/manage _*DEBUG* switches_.
 
-* [Version v**1.5.1**](src/debug.js) (updated **2026-08-07**)
+* [Version v**1.6.0**](src/debug.js) (updated **2026-08-11**)
 
 <!--See also my script [**`debug-links.js`**](#debuglinksjs) below.-->
 
-```
-NEW[v1.5.0]: according to `DEBUG.THROW` if `DEBUG.DEBUG`
-	[mode] is disabled, you can throw an exception like
-	before, or we'll return the new DEFAULT VALUE you'd
-	use in 'production'. :-)
-	.. see the 'DEFAULT_THROW' (is set to (false) now);
-	it's the default setting for the new `DEBUG.THROW`.
-```
+Now also w/ some bigger updates! I think my newest feature is some super great extension!
 
 <br><br>
 

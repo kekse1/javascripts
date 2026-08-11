@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://github.com/kekse1/
- * v1.5.1
+ * v1.6.0
  */
 
 /*
@@ -31,8 +31,10 @@
  */
 
 //
-const DEFAULT_DEBUG = true;
-const DEFAULT_THROW = false;
+const	DEFAULT_DEBUG = true,
+	DEFAULT_THROW = false,
+	DEFAULT_ENV = true,
+	DEFAULT_ENV_KEY = '__DEBUG_';
 
 //
 const DEBUG = (... _args) => {
@@ -68,6 +70,7 @@ export default DEBUG;
 //
 DEBUG.DEBUG = DEFAULT_DEBUG;
 DEBUG.THROW = DEFAULT_THROW;
+DEBUG.ENV = DEFAULT_ENV;
 
 //
 const checkID = (_id, _check = false) => {
@@ -118,13 +121,39 @@ const create = (_key, _value, _default, ... _param) => {
 	{
 		throw new Error('Your key already exists');
 	}
+	
+	var	replaces = _value,
+		rewrite;
 
-	const result = {
+	if(typeof process !== 'undefined' && process.env)
+	{
+		const envKey = (DEFAULT_ENV_KEY + _key);
+	
+		if(DEBUG.ENV && (envKey in process.env))
+		{
+			_value = tryCast(process.
+					env[envKey]);
+			rewrite = true;
+		}
+		else
+		{
+			rewrite = false;
+			replaces = undefined;
+		}
+	}
+	else
+	{
+		rewrite = null;
+		replaces = undefined;
+	}
+
+	const result =			{
 		id: null,
 		desc: '',
 		key: _key,
 		value: _value,
-		default: _default };
+		rewrite, replaces,
+		default: _default	};
 
 	for(const p of _param)
 	{
@@ -254,7 +283,7 @@ DEBUG.rawList = () => DEBUG.list(true);
 DEBUG.map = (_force = false) => {
 	const result = {};
 	const type = ((DEBUG.DEBUG || _force) ?
-		'value' : 'default');
+			'value' : 'default');
 
 	for(const item of DEBUG.MAP)
 	{
@@ -273,4 +302,38 @@ DEBUG.remove = (_key) => {
 };
 
 //
+const tryCast = (_value) => {
+	if(typeof _value !== 'string')
+	{
+		return _value;
+	}
 
+	if(_value.length === 0)
+	{
+		return true;
+	}
+
+	if(!isNaN(_value))
+	{
+		return Number(_value);
+	}
+
+	var temp = _value.slice(0, -1);
+
+	if(_value[_value.length - 1] === 'n' && !isNaN(temp))
+	{
+		return BigInt(temp);
+	}
+
+	if(_value.length <= 9) switch(_value.toLowerCase())
+	{
+		case 'no': case 'false': case 'off': return false;
+		case 'yes': case 'true': case 'on': return true;
+		case 'null': return null;
+		case 'undefined': return undefined;
+	}
+
+	return _value;
+};
+
+//
