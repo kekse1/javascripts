@@ -16,7 +16,7 @@
 const	DEFAULT_DEBUG = true,
 	DEFAULT_THROW = false,
 	DEFAULT_ENV = true,
-	DEFAULT_ENV_KEY = '__DEBUG_';
+	DEFAULT_ENV_KEY = '_DEBUG_';
 
 //
 const DEBUG = (... _args) => {
