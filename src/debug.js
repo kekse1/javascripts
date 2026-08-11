@@ -10,24 +10,6 @@
  *
  * 	# `const DEBUG_*` ... // no more.
  *
- * In the newest version >=1.0.0 my code is really much more
- * compact.. nearly not worth mentioning it .. but it helps.
- *
- * I realized that it's not really great to include the file
- * names/paths as first map key; because it was my intention
- * to NOT do so: my code had many 'const DEBUG_`, which were
- * partially the same over many files.
- *
- * I wanted to define them once, on a global location. .. so
- * this was meant to be! ;-)
- *
- * NEW[v1.5.0]: according to `DEBUG.THROW` if `DEBUG.DEBUG`
- * 	[mode] is disabled, you can throw an exception like
- *	before, or we'll return the new DEFAULT VALUE you'd
- *	use in 'production'. :-)
- *	.. see the 'DEFAULT_THROW' (is set to (false) now);
- *	it's the default setting for the new `DEBUG.THROW`.
- *
  */
 
 //
