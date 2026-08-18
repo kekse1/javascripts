@@ -223,12 +223,17 @@ const proceed = (_yes = true) => {
 
 		if(res === null)
 		{
-			if(COPY) try
+			if(fs.existsSync(target))
+			{
+				console.error('This target path already exists: `' +
+					target.warn() + '`'.error());
+				res = false;
+			}
+			else if(COPY) try
 			{
 				fs.cpSync(item, target, {
 					recursive: true,
-					dereference: RESOLVE,
-					errorOnExist: true });
+					dereference: RESOLVE });
 				res = true;
 			}
 			catch(_err)
