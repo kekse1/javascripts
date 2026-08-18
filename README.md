@@ -32,6 +32,7 @@ time(!) I'm usually working with CommonJS modules, using
 <br><br>
 
 ### News
+* \[**2026-08-18**\] New [**`group.js`**](#groupjs), v**0.1.2**;
 * \[**2026-08-11**\] Bigger update in my [**`debug.js`**](#debugjs), v**1.6.0**!
 * \[**2026-07-15**\] Updated [**`extract-links.js`**](#extractlinksjs), the tiny/easy version of [**`links.js`**](#linksjs), v**0.1.3**;
 * \[**2025-11-16**\] Copied my [**`list.js`**](#listjs) to this repository!
@@ -79,6 +80,7 @@ time(!) I'm usually working with CommonJS modules, using
 	* [`debug`.js](#debugjs)
 	* [`transposition`.js](#transpositionjs)
 	* [`list`.js](#listjs)
+	* [`group`.js](#groupjs)
 3. [Contact](#contact)
 4. [Copyright and License](#copyright-and-license)
 
@@ -546,6 +548,22 @@ See also [my **`v4`** repository](https://github.com/kekse1/v4/#scripts).
 
 > [!TIP]
 > See also this [shell startup script](./src/list.sh) as an example.
+
+<br><br>
+
+### `group.js`
+
+<a href="src/group.js">
+<img id="groupjs" src="https://kekse.biz/github.php?override=github:javascripts&draw&angle=3&size=56&fg=140,130,20&font=OpenSans&ro&readonly&v=48&h=48&text=%60group.js%60" />
+</a>
+
+Manually processing many files is sometimes a huge task.
+So I created this tool to organize this kind of work.
+
+* [Version v**0.1.2**](src/group.js) (created **2026-08-18**)
+
+It'll divide many files into groups (in sub-directories). :-)
+
 
 <br><br><br>
 
