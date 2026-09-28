@@ -32,6 +32,7 @@ time(!) I'm usually working with CommonJS modules, using
 <br><br>
 
 ### News
+* \[**2026-09-28**\] Tiny update in the [**`group.js`**](#groupjs), v**0.1.3**;
 * \[**2026-08-18**\] New [**`group.js`**](#groupjs), v**0.1.2**;
 * \[**2026-08-11**\] Bigger update in my [**`debug.js`**](#debugjs), v**1.6.0**!
 * \[**2026-07-15**\] Updated [**`extract-links.js`**](#extractlinksjs), the tiny/easy version of [**`links.js`**](#linksjs), v**0.1.3**;
@@ -560,9 +561,10 @@ See also [my **`v4`** repository](https://github.com/kekse1/v4/#scripts).
 Manually processing many files is sometimes a huge task.
 So I created this tool to organize this kind of work.
 
-* [Version v**0.1.2**](src/group.js) (created **2026-08-18**)
+* [Version v**0.1.3**](src/group.js) (updated **2026-09-28**)
 
 It'll divide many files into groups (in sub-directories). :-)
+
 
 
 <br><br><br>

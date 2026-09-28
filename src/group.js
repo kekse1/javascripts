@@ -3,7 +3,7 @@
 /*
  * Copyright (c) Sebastian kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://github.com/kekse1/
- * v0.1.2
+ * v0.1.3
  */
  
 /*
@@ -36,7 +36,8 @@ args.ITEM = [
 	[ '--copy', false ],
 	[ '--relative', true ],
 	[ '--start', 0 ],
-	[ '--resolve', false ]
+	[ '--resolve', false ],
+	[ '--reverse', false ]
 ];
 
 args.ITEM.sort(true);
@@ -110,14 +111,16 @@ if(!int(COUNT) || COUNT < 1)
 	syntax(2);
 }
 
-const COPY = (args.has('copy', 'boolean') ?
-		args.get('copy') : false);
-const RELATIVE = (args.has('relative', 'boolean') ?
-		args.get('relative') : true);
-const START = (args.has('start', 'integer') ?
-		args.get('start') : 0);
-const RESOLVE = (args.has('resolve', 'boolean') ?
-		args.get('resolve') : false);
+const	COPY = (args.has('copy', 'boolean') ?
+		args.get('copy') : false),
+	RELATIVE = (args.has('relative', 'boolean') ?
+		args.get('relative') : true),
+	START = (args.has('start', 'integer') ?
+		args.get('start') : 0),
+	RESOLVE = (args.has('resolve', 'boolean') ?
+		args.get('resolve') : false),
+	REVERSE = (args.has('reverse', 'boolean') ?
+		args.get('reverse') : false);
 
 //
 var items = [];
@@ -161,6 +164,12 @@ const BLOCKS = Math._ceil(
 	result.length / COUNT);
 const PAD = (START + BLOCKS).
 	toString().length;
+
+//
+if(REVERSE)
+{
+	result.reverse();
+}
 
 //
 const proceed = (_yes = true) => {
