@@ -89,12 +89,12 @@ DEBUG.ENV_KEY = DEFAULT_ENV_KEY;
 DEBUG.checkEnvironment = (_force = false, _print = true, _throw = true) => {
 	if(!DEFAULT_CHECK && !_force)
 	{
-		return null;
+		return false;
 	}
 
 	if(!DEBUG.ENV || !DEBUG.ENV_KEY)
 	{
-		return null;
+		return false;
 	}
 	
 	const	result = [],
@@ -153,10 +153,14 @@ DEBUG.checkEnvironment = (_force = false, _print = true, _throw = true) => {
 			}
 			
 			console.eol();
-			process.exit(127);
 		}
 	}
-process.exit(234);
+
+	if(result.length === 0)
+	{
+		return true;
+	}
+
 	return result;
 };
 
