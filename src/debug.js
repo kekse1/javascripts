@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
- * https://kekse.biz/ https://github.com/kekse1/
- * v1.6.0
+ * https://kekse.biz/ https://github.com/kekse1/javascripts/
+ * v1.6.3
  */
 
 /*
@@ -10,13 +10,42 @@
  *
  * 	# `const DEBUG_*` ... // no more.
  *
+ * In the newest version >=1.0.0 my code is really much more
+ * compact.. nearly not worth mentioning it .. but it helps.
+ *
+ * I realized that it's not really great to include the file
+ * names/paths as first map key; because it was my intention
+ * to NOT do so: my code had many 'const DEBUG_`, which were
+ * partially the same over many files.
+ *
+ * I wanted to define them once, on a global location. .. so
+ * this was meant to be! ;-)
+ *
+ * NEW[v1.5.0]: according to `DEBUG.THROW` if `DEBUG.DEBUG`
+ * 	[mode] is disabled, you can throw an exception like
+ *	before, or we'll return the new DEFAULT VALUE you'd
+ *	use in 'production'. :-)
+ *	.. see the 'DEFAULT_THROW' (is set to (false) now);
+ *	it's the default setting for the new `DEBUG.THROW`.
+ *
  */
 
 //
-const	DEFAULT_DEBUG = true,
+import * as globals from './globals.js';
+
+//
+const
+	DEFAULT_CHECK = true,
+	DEFAULT_DEBUG = true,
 	DEFAULT_THROW = false,
 	DEFAULT_ENV = true,
 	DEFAULT_ENV_KEY = '_DEBUG_';
+
+//
+const
+	DEFAULT_CAST_REGEXP = false,
+	DEFAULT_CAST_EMPTY = true,
+	DEFAULT_CAST_ARRAY = true;
 
 //
 const DEBUG = (... _args) => {
@@ -44,6 +73,7 @@ const DEBUG = (... _args) => {
 	return DEBUG.get(... _args);
 };
 
+
 //
 DEBUG.MAP = new Map();
 DEBUG.ID = new Map();
@@ -53,6 +83,83 @@ export default DEBUG;
 DEBUG.DEBUG = DEFAULT_DEBUG;
 DEBUG.THROW = DEFAULT_THROW;
 DEBUG.ENV = DEFAULT_ENV;
+DEBUG.ENV_KEY = DEFAULT_ENV_KEY;
+
+//
+DEBUG.checkEnvironment = (_force = false, _print = true, _throw = true) => {
+	if(!DEFAULT_CHECK && !_force)
+	{
+		return null;
+	}
+
+	if(!DEBUG.ENV || !DEBUG.ENV_KEY)
+	{
+		return null;
+	}
+	
+	const	result = [],
+		KEY = DEBUG.ENV_KEY,
+		keys = new Set(DEBUG.keys()),
+		env = Object.keys(process.env);
+	var	total = 0, valid = 0;
+	
+	var key; for(var i = 0, j = 0; i < env.length; ++i)
+	{
+		if(!(key = env[i]).startsWith(KEY))
+		{
+			continue;
+		}
+		
+		if(!(key = key.substr(KEY.length)))
+		{
+			continue;
+		}
+		
+		if(!keys.has(key))
+		{
+			result[j++] = key;
+		}
+		else
+		{
+			++valid;
+		}
+		
+		++total;
+	}
+	
+	if(_print && total > 0)
+	{
+		console.debug(EOL + ' ['.debug() + 'INFO'.info() + ']'.debug() +
+			' There are ' + total.toLocaleString().bold().warn() +
+			' debug '.bold().error() + 'environment'.debug().
+			underline() + ' variables set (in total), '.debug() +
+			valid.toLocaleString().bold().info() + ' ' +
+			(valid === 1 ? 'is' : 'are') + ' ' + 'valid'.info().
+			underline() + '!'.debug());
+
+		if(_throw && result.length > 0)
+		{
+			console.error('['.debug() + 'ERROR'.error().bold() + ']'.debug() +
+				' You\'ve set ' + result.length.toLocaleString().warn().bold() +
+				' undefined '.error().bold() + '`'.debug() + DEBUG.ENV_KEY.
+				warn() + '*'.info() + '`'.debug() + ' environment keys'.
+				error() + ' (out of '.debug() + keys.size.toLocaleString().
+				bold().info() + ' in total)'.debug() + ':'.error() + EOL);
+			
+			for(const i of result)
+			{
+				console.error('\t' + '>> '.debug() +
+					'`'.warn() + i.error() + '`'.warn());
+			}
+			
+			console.eol();
+			process.exit(127);
+		}
+	}
+process.exit(234);
+	return result;
+};
+
 
 //
 const checkID = (_id, _check = false) => {
@@ -106,26 +213,27 @@ const create = (_key, _value, _default, ... _param) => {
 	
 	var	replaces = _value,
 		rewrite;
-
-	if(typeof process !== 'undefined' && process.env)
-	{
-		const envKey = (DEFAULT_ENV_KEY + _key);
+	const	envKey = DEBUG.getFullEnvKey(_key);
 	
-		if(DEBUG.ENV && (envKey in process.env))
+	if(DEBUG.ENV && DEBUG.hasEnvKey(_key))
+	{
+		try
 		{
-			_value = tryCast(process.
-					env[envKey]);
+			_value = process.env[envKey].tryCast(
+				DEFAULT_CAST_REGEXP,
+				DEFAULT_CAST_EMPTY,
+				DEFAULT_CAST_ARRAY);
 			rewrite = true;
 		}
-		else
+		catch(_err)
 		{
-			rewrite = false;
+			rewrite = null;
 			replaces = undefined;
 		}
 	}
 	else
 	{
-		rewrite = null;
+		rewrite = false;
 		replaces = undefined;
 	}
 
@@ -168,6 +276,29 @@ const create = (_key, _value, _default, ... _param) => {
 
 	DEBUG.MAP.set(result.key, result);
 	return result;
+};
+
+//
+DEBUG.getFullEnvKey = (_key) => {
+	if(!DEBUG.ENV_KEY) return null;
+	if(_key.startsWith(DEBUG.ENV_KEY)) return _key;
+	return (DEBUG.ENV_KEY + _key);
+};
+
+DEBUG.hasEnvKey = (_key) => {
+	if(!DEBUG.ENV_KEY) return null;
+	return (DEBUG.getFullEnvKey(_key) in process.env);
+};
+
+DEBUG.hasEnv = () => {
+	if(!DEBUG.ENV_KEY) return null;
+	return (DEBUG.ENV_KEY in process.env);
+};
+
+DEBUG.getEnvKey = (_key) => {
+	if(!DEBUG.ENV_KEY) return null;
+	if(!_key.startsWith(DEBUG.ENV_KEY)) return _key;
+	return _key.substr(DEBUG.ENV_KEY.length);
 };
 
 //
@@ -245,21 +376,40 @@ DEBUG.raw = (_key) => DEBUG.get(_key, true);
 DEBUG.id = (_key) => DEBUG.get(_key, true).id;
 
 DEBUG.list = (_raw = false) => {
-	const result = new Array(DEBUG.count());
+	const result = new Array(DEBUG.size);
 	var index = 0;
 
 	DEBUG.MAP.forEach((_value) => {
-		if(_raw) result[index++] = { ... _value };
-		else result[index++] = [
-			_value.id,
-			_value.key,
-			_value.value,
-			_value.desc ];
+		if(_raw)	result[index++] =
+					{ ... _value };
+		else		result[index++] =		[
+					_value.id,
+					_value.key,
+					_value.value,
+					_value.rewrite,
+					_value.replaces,
+					_value.desc		];
 	});
 
 	return result;
 };
 
+DEBUG.rewrites = (_raw = false) => {
+	const result = new Array(DEBUG.size);
+	var index = 0;
+	
+	DEBUG.MAP.forEach((_value) => {
+		if(!_value.rewrite) return;
+		if(_raw)	result[index++] =
+					{ ... _value };
+		else		result[index++] =
+					_value.key;
+	});
+	
+	return result;
+};
+
+DEBUG.rawRewrites = () => DEBUG.rewrites(true);
 DEBUG.rawList = () => DEBUG.list(true);
 
 DEBUG.map = (_force = false) => {
@@ -271,7 +421,7 @@ DEBUG.map = (_force = false) => {
 	{
 		result[item[0]] = item[1][type];
 	}
-
+	
 	return result;
 };
 
