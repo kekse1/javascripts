@@ -1,7 +1,7 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
  * https://kekse.biz/ https://github.com/kekse1/javascripts/
- * v1.6.3
+ * v1.6.4
  */
 
 /*
@@ -86,7 +86,7 @@ DEBUG.ENV = DEFAULT_ENV;
 DEBUG.ENV_KEY = DEFAULT_ENV_KEY;
 
 //
-DEBUG.checkEnvironment = (_force = false, _print = true, _throw = true) => {
+DEBUG.checkEnvironment = (_force = false, _print = true, _exit = 255) => {
 	if(!DEFAULT_CHECK && !_force)
 	{
 		return false;
@@ -137,7 +137,7 @@ DEBUG.checkEnvironment = (_force = false, _print = true, _throw = true) => {
 			(valid === 1 ? 'is' : 'are') + ' ' + 'valid'.info().
 			underline() + '!'.debug());
 
-		if(_throw && result.length > 0)
+		if(result.length > 0)
 		{
 			console.error('['.debug() + 'ERROR'.error().bold() + ']'.debug() +
 				' You\'ve set ' + result.length.toLocaleString().warn().bold() +
@@ -153,6 +153,16 @@ DEBUG.checkEnvironment = (_force = false, _print = true, _throw = true) => {
 			}
 			
 			console.eol();
+
+			if(int(_exit))
+			{
+				process.exit(_exit);
+			}
+
+			if(_exit)
+			{
+				process.exit(255);
+			}
 		}
 	}
 
